@@ -4606,7 +4606,6 @@ Function RenderMapCreatorTooltip%(x%, y%, Width%, Height%, MapName$)
 	RowText(Txt[2], fX, fY + (StringHeightTxt0 * 2), fW, fH)
 	TextEx(fX, fY + ((StringHeightTxt0 * 2) + StringHeightTxt2 * Lines + CoordEx), Txt[3])
 	TextEx(fX, fY + ((StringHeightTxt0 * 3) + StringHeightTxt2 * Lines + CoordEx), Txt[4])
-	TextEx(fX, fY + ((StringHeightTxt0 * 4) + StringHeightTxt2 * Lines + CoordEx), Txt[5])
 End Function
 
 ;~IDEal Editor Parameters:
