@@ -663,7 +663,7 @@ Function CreateNPC.NPCs(NPCType%, x#, y#, z#)
 	PositionEntity(n\Collider, x, y, z, True)
 	PositionEntity(n\OBJ, x, y, z, True)
 	
-	If n\NPCType <> NPCType372 And n\NPCType <> NPCType513_1 And n\NPCType <> NPCType966 And n\NPCType <> NPCTypeApache And n\NPCType <> NPCTypeCockroach Then n\Shadow = CreateShadow(n\OBJ, n\CollRadius * 1.8, n\CollRadius * 1.8)
+	If n\NPCType <> NPCType372 And n\NPCType <> NPCType513_1 And n\NPCType <> NPCType966 And n\NPCType <> NPCTypeApache And n\NPCType <> NPCTypeCockroach And n\NPCType <> NPCType457 Then n\Shadow = CreateShadow(n\OBJ, n\CollRadius * 1.8, n\CollRadius * 1.8)
 	
 	ResetEntity(n\Collider)
 	
