@@ -7935,6 +7935,7 @@ Function UpdateEvent_Cont2_860_1%(e.Events)
 			If (Not EntityHidden(fr\Forest_Pivot)) Then HideEntity(fr\Forest_Pivot)
 			
 			If e\room\RoomDoors[0]\Open Lor e\room\RoomDoors[1]\Open
+				If EntityHidden(prtl\Portal) Then ShowEntity(prtl\Portal)
 				If EntityInView(prtl\Portal, Camera) And EntityDistanceSquared(prtl\Portal, me\Collider) < 16.0
 					UpdateForest(prtl\Cam, True)
 					
@@ -8026,6 +8027,7 @@ Function UpdateEvent_Cont2_860_1%(e.Events)
 					EndIf
 				EndIf
 			Else
+				If (Not EntityHidden(prtl\Portal)) Then HideEntity(prtl\Portal)
 				AnimateEx(e\room\RoomDoors[0]\OBJ, AnimTime(e\room\RoomDoors[0]\OBJ), 0, 0, 1, False)
 				AnimateEx(e\room\RoomDoors[1]\OBJ, AnimTime(e\room\RoomDoors[1]\OBJ), 0, 0, 1, False)
 			EndIf
