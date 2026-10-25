@@ -966,7 +966,7 @@ Function RemoveMonitorInstances%()
 End Function
 
 Const MaxNPCModelIDAmount% = 34
-Const MaxNPCTextureID% = 33
+Const MaxNPCTextureID% = 34
 
 Type NPCInstance
 	Field NPCModelID%[MaxNPCModelIDAmount]
@@ -1028,6 +1028,7 @@ Enum NPCTextures
 	NPC_CLASS_D_GONZALES_TEXTURE
 	NPC_CLASS_D_BENJAMIN_TEXTURE
 	NPC_CLASS_D_SECURITY_TEXTURE
+	NPC_CLASS_D_SECURITY_2_TEXTURE
 	NPC_CLASS_D_SCIENTIST_TEXTURE
 	NPC_CLASS_D_FRANKLIN_TEXTURE
 	NPC_CLASS_D_MAYNARD_TEXTURE
@@ -1075,6 +1076,7 @@ Function LoadNPCs%()
 	n_I\NPCTextureName[NPC_CLASS_D_GONZALES_TEXTURE] = "Gonzales"
 	n_I\NPCTextureName[NPC_CLASS_D_BENJAMIN_TEXTURE] = "D_9341(2)"
 	n_I\NPCTextureName[NPC_CLASS_D_SECURITY_TEXTURE] = "security"
+	n_I\NPCTextureName[NPC_CLASS_D_SECURITY_2_TEXTURE] = "security(2)"
 	n_I\NPCTextureName[NPC_CLASS_D_SCIENTIST_TEXTURE] = "scientist"
 	n_I\NPCTextureName[NPC_CLASS_D_FRANKLIN_TEXTURE] = "Franklin"
 	n_I\NPCTextureName[NPC_CLASS_D_MAYNARD_TEXTURE] = "Maynard"

@@ -2352,10 +2352,11 @@ Function UpdateEvent_Room2_GW_2%(e.Events)
 			EndIf
 		EndIf
 		If e\room\NPC[0] = Null
-			TFormPoint(-156.0, 71.0, 121.0, e\room\OBJ, 0)
-			e\room\NPC[0] = CreateNPC(NPCTypeGuard, TFormedX(), TFormedY(), TFormedZ())
-			e\room\NPC[0]\State = 8.0 : e\room\NPC[0]\IsDead = True
-			SetNPCFrame(e\room\NPC[0], 288.0)
+			TFormPoint(-156.0, 51.2, 121.0, e\room\OBJ, 0)
+			e\room\NPC[0] = CreateNPC(NPCTypeD, TFormedX(), TFormedY(), TFormedZ())
+			e\room\NPC[0]\State3 = -1.0 : e\room\NPC[0]\IsDead = True
+			ChangeNPCTextureID(e\room\NPC[0], NPC_CLASS_D_SECURITY_2_TEXTURE)
+			SetNPCFrame(e\room\NPC[0], 677.0)
 			RotateEntity(e\room\NPC[0]\Collider, 0.0, e\room\Angle + 225.0, 0.0, True)
 		EndIf
 	EndIf
