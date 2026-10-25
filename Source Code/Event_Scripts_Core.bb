@@ -5684,7 +5684,7 @@ Function UpdateEvent_Room2_Test_HCZ%(e.Events)
 			e\room\NPC[0]\State = 1.0
 			RotateEntity(e\room\NPC[0]\Collider, 0.0, e\room\Angle - 90.0, 0.0)
 			
-			TFormPoint(320.0, -1227.0, 164.0, e\room\OBJ, 0)
+			TFormPoint(340.0, -1227.0, 114.0, e\room\OBJ, 0)
 			e\room\NPC[1] = CreateNPC(NPCTypeGuard, TFormedX(), TFormedY(), TFormedZ())
 			e\room\NPC[1]\State = 8.0 : e\room\NPC[1]\IsDead = True
 			SetNPCFrame(e\room\NPC[1], 288.0)
