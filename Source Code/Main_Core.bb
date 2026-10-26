@@ -830,14 +830,6 @@ Function RenderHintMessages%()
 	EndIf
 End Function
 
-Function DelSaveOnKeter%()
-	If SelectedDifficulty\SaveType => DIFFICULTY_SAVE_TYPE_SAVE_ON_QUIT
-		DeleteGame(CurrSave)
-		GameSaved = False
-		LoadSavedGames()
-	EndIf
-End Function
-
 Function Kill%(IsBloody% = False, Animated% = True)
 	If chs\GodMode Then Return
 	

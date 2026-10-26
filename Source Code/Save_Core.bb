@@ -2694,6 +2694,14 @@ Function DeleteGame%(sv.Save)
 	Delete(sv)
 End Function
 
+Function DelSaveOnKeter%()
+	If SelectedDifficulty\SaveType => DIFFICULTY_SAVE_TYPE_SAVE_ON_QUIT
+		DeleteGame(CurrSave)
+		GameSaved = False
+		LoadSavedGames()
+	EndIf
+End Function
+
 Const CustomMapsPath$ = "Map Creator\Maps\"
 
 Type CustomMaps
