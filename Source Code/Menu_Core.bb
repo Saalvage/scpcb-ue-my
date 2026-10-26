@@ -2023,8 +2023,8 @@ Const MenuTab_Options_Advanced% = 5
 
 Global MenuOpen%
 
-Function UpdateMenu%()
-	CatchErrors("UpdateMenu()")
+Function UpdatePauseMenu%()
+	CatchErrors("UpdatePauseMenu()")
 	
 	Local r.Rooms, sc.SecurityCams, amsg.AchievementMsg, shdw.Shadows, it.Items, n.NPCs
 	Local z%, i%
@@ -2645,11 +2645,11 @@ Function UpdateMenu%()
 		EndIf
 	EndIf
 	
-	CatchErrors("Uncaught: UpdateMenu()")
+	CatchErrors("Uncaught: UpdatePauseMenu()")
 End Function
 
-Function RenderMenu%()
-	CatchErrors("RenderMenu()")
+Function RenderPauseMenu%()
+	CatchErrors("RenderPauseMenu()")
 	
 	If (Not InFocus()) ; ~ Game is out of focus then pause the game
 		MenuOpen = True
@@ -3053,7 +3053,7 @@ Function RenderMenu%()
 	
 	SetFontEx(fo\FontID[Font_Default])
 	
-	CatchErrors("Uncaught: RenderMenu()")
+	CatchErrors("Uncaught: RenderPauseMenu()")
 End Function
 
 ; ~ Endings ID Constants
@@ -3147,7 +3147,7 @@ Function UpdateEnding%()
 					EndIf
 				Else
 					ShouldPlay = 22
-					UpdateMenu()
+					UpdatePauseMenu()
 				EndIf
 			; ~ Credits
 			ElseIf me\EndingTimer <= -2000.0
@@ -3283,7 +3283,7 @@ Function RenderEnding%()
 					RenderMenuButtons()
 					RenderCursor()
 				Else
-					RenderMenu()
+					RenderPauseMenu()
 				EndIf
 				; ~ Credits
 			ElseIf me\EndingTimer <= -2000.0

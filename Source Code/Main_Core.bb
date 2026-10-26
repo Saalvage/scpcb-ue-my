@@ -674,7 +674,7 @@ Function UpdateGame%()
 			If me\SelectedEnding <> -1 Then UpdateEnding()
 		ElseIf me\SelectedEnding = -1
 			UpdateSubtitles()
-			UpdateMenu()
+			UpdatePauseMenu()
 		Else
 			UpdateSubtitles()
 		EndIf
@@ -718,7 +718,7 @@ Function RenderGame%()
 		RenderSubtitles()
 	ElseIf me\SelectedEnding = -1
 		RenderSubtitles()
-		RenderMenu()
+		RenderPauseMenu()
 	Else
 		RenderSubtitles()
 	EndIf
