@@ -4743,12 +4743,16 @@ Function RenderHUD%()
 	EndIf
 	Color(255, 255, 255)
 	Rect(x - IconRectSpace, y, IconRectSize, IconRectSize, False)
-	If me\Crouch
-		WalkIconID = 2
-	ElseIf (KeyDown(key\SPRINT) And (Not InvOpen) And OtherOpen = Null) And me\CurrSpeed > 0.0 And (Not chs\NoClip) And me\Stamina > 0.0
-		WalkIconID = 1
+	If (Not I_268\InvisibilityOn)
+		If me\Crouch
+			WalkIconID = 2
+		ElseIf (KeyDown(key\SPRINT) And (Not InvOpen) And OtherOpen = Null) And me\CurrSpeed > 0.0 And (Not chs\NoClip) And me\Stamina > 0.0
+			WalkIconID = 1
+		Else
+			WalkIconID = 0
+		EndIf
 	Else
-		WalkIconID = 0
+		WalkIconID = 3
 	EndIf
 	DrawBlock(t\IconID[WalkIconID], x - IconSpace, y + 1)
 	
@@ -4769,9 +4773,9 @@ Function RenderHUD%()
 	Color(255, 255, 255)
 	Rect(x - IconRectSpace, y, IconRectSize, IconRectSize, False)
 	If me\BlinkTimer < 0.0
-		BlinkIconID = 4
+		BlinkIconID = 5
 	Else
-		BlinkIconID = 3
+		BlinkIconID = 4
 	EndIf
 	DrawBlock(t\IconID[BlinkIconID], x - IconSpace, y + 1)
 	

@@ -2446,7 +2446,7 @@ End Function
 ;[Block]
 Const MaxOverlayTextureIDAmount% = 4
 Const MaxOverlayIDAmount% = 13
-Const MaxIconIDAmount% = 14
+Const MaxIconIDAmount% = 15
 Const MaxImageIDAmount% = 9
 ;[End Block]
 
@@ -2485,6 +2485,7 @@ Enum IconID
 	ICON_WALK
 	ICON_SPRINT
 	ICON_CROUCH
+	ICON_BLANK
 	ICON_BLINK_1
 	ICON_BLINK_2
 	ICON_HAND_1
@@ -2657,16 +2658,17 @@ Function LoadHUDIcons%()
 	t\IconID[ICON_WALK] = ResizeImageEx(LoadImage_Strict("GFX\HUD\walk_icon.png"), MenuScale, MenuScale)
 	t\IconID[ICON_SPRINT] = ResizeImageEx(LoadImage_Strict("GFX\HUD\sprint_icon.png"), MenuScale, MenuScale)
 	t\IconID[ICON_CROUCH] = ResizeImageEx(LoadImage_Strict("GFX\HUD\crouch_icon.png"), MenuScale, MenuScale)
+	t\IconID[ICON_BLANK] = ResizeImageEx(LoadImage_Strict("GFX\HUD\blank_icon.png"), MenuScale, MenuScale)
 	
 	; ~ Blink icon
 	For i = ICON_BLINK_1 To ICON_BLINK_2
-		t\IconID[i] = LoadImage_Strict("GFX\HUD\blink_icon(" + (i - 2) + ").png")
+		t\IconID[i] = LoadImage_Strict("GFX\HUD\blink_icon(" + (i - 3) + ").png")
 		t\IconID[i] = ResizeImageEx(t\IconID[i], MenuScale, MenuScale)
 	Next
 	
 	; ~ Hand icon
 	For i = ICON_HAND_1 To ICON_HAND_2
-		t\IconID[i] = ResizeImageEx(LoadImage_Strict("GFX\HUD\hand_symbol(" + (i - 4) + ").png"), MenuScale, MenuScale)
+		t\IconID[i] = ResizeImageEx(LoadImage_Strict("GFX\HUD\hand_symbol(" + (i - 5) + ").png"), MenuScale, MenuScale)
 	Next
 	
 	; ~ SCP-714 protection icon
@@ -2681,7 +2683,7 @@ Function LoadHUDIcons%()
 	; ~ Arrow icons
 	For i = ICON_ARROW_1 To ICON_ARROW_4
 		t\IconID[i] = ResizeImageEx(LoadImage_Strict("GFX\HUD\arrow_symbol.png"), MenuScale, MenuScale)
-		RotateImage(t\IconID[i], (i - 10) * 90.0)
+		RotateImage(t\IconID[i], (i - 11) * 90.0)
 		HandleImage(t\IconID[i], 0, 0)
 	Next
 End Function
