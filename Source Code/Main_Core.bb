@@ -5139,7 +5139,7 @@ Function RenderGUI%()
 			If HandEntity <> 0
 				Render3DHandIcon(ICON_HAND_1, HandIcon_Default)
 				For i = HandIcon_Up To HandIcon_Left
-					If DrawArrowIcon[i - HandIcon_Up] Then Render3DHandIcon(i + 7, i)
+					If DrawArrowIcon[i - HandIcon_Up] Then Render3DHandIcon(i + 8, i)
 				Next
 			EndIf
 		EndIf
