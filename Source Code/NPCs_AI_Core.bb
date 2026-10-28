@@ -2204,6 +2204,9 @@ Function UpdateNPCType106%(n.NPCs)
 			Case 3.0 ; ~ Chasing player
 				;[Block]
 				Local Visible% = False
+				
+				If PlayerRoom\RoomTemplate\RoomID <> r_gate_a And PlayerRoom\RoomTemplate\RoomID <> r_dimension_106 Then ShouldPlay = 10
+				
 				If PlayerRoom\RoomTemplate\RoomID <> r_dimension_1499
 					If Dist < 12.25
 						If (Not (chs\NoTarget Lor I_268\InvisibilityOn)) Then Visible = True
@@ -2226,7 +2229,6 @@ Function UpdateNPCType106%(n.NPCs)
 						n\State2 = Max(0.0, n\State2 - fps\Factor[0])
 					EndIf
 					
-					If PlayerRoom\RoomTemplate\RoomID <> r_gate_a And PlayerRoom\RoomTemplate\RoomID <> r_dimension_106 Then ShouldPlay = 10
 					
 					If Dist > 0.64
 						PrevFrame = n\Frame
