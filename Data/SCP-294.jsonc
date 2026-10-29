@@ -341,15 +341,6 @@
 		"blur": 50.0
 	},
 	{
-		"name": ["Gayness", "Faggot", "Lamer"],
-		"color": [245, 171, 252],
-		"alpha": 1.0,
-		"glow": true,
-		"dispense_sound": "SFX\\SCP\\294\\Dispense3.ogg",
-		"drink_sound": "SFX\\SCP\\294\\Spit.ogg",
-		"blur": 15.0
-	},
-	{
 		"name": ["Carrot Juice", "Carrot-apple Juice"],
 		"color": [254, 135, 16],
 		"alpha": 1.0,
