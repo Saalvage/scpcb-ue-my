@@ -4291,15 +4291,15 @@ Function DrawItemTooltip(x%, y%, Width%, Height%, Desc%)
 			Return
 	End Select
 	
-	lines% = GetLineAmount(Txt, fw, fh)
-	If Txt2$ = ""
+	lines = GetLineAmount(Txt, fw, fh)
+	If Txt2 = ""
 		RenderFrame(x, y, Width, ((StringHeight(Txt) * lines) + (15 + lines) * MenuScale) + Extraspace)
 	Else
-		lines2% = GetLineAmount(txt2, fw, fh)
+		lines2 = GetLineAmount(txt2, fw, fh)
 		RenderFrame(x, y, Width,(((StringHeight(Txt) * lines) + (15 + lines) * MenuScale) + (StringHeight(txt2) * lines2) + (10 + lines2) * MenuScale) + Extraspace)
 	EndIf
 	RowText(txt, fx, fy, fw, fh)
-	If Txt2$ <> ""
+	If Txt2 <> ""
 		Color(R, G, B)
 		RowText(txt2, fx, (fy + (StringHeight(Txt)*lines) + (5 + lines) * MenuScale), fw, fh)
 	EndIf
