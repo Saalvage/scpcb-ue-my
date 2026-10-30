@@ -122,7 +122,7 @@
 		
 		Omnisix - Co-Leader | https://www.youtube.com/channel/UCSedr4MqcTC5CsFGSZwNwMw
 		
-		Nikita Sidorov ("Jabka") - Founder | https://github.com/Jabka666
+		Slender - Member | https://github.com/slend13561
 		
 		XtrithX - Member | https://www.youtube.com/channel/UCbk12Ez1p6RZfkorjMQ3Hxg
 		
@@ -132,6 +132,7 @@
 
 *EX-developers
 		
+		Nikita Sidorov ("Jabka") - Founder | https://github.com/Jabka666
 		Stefan Koch ("Salvage") | https://github.com/Saalvage
 		
 		Dmitriy Sazanov ("Dmitriy-Bars")
@@ -139,7 +140,6 @@
 		
 		itzslain | https://github.com/itzslain
 		EpicDasherFR | https://github.com/EpicDasherFR
-		slend | https://github.com/slend13561
 		Egor Oleynik ("Wolfnaya") | https://github.com/wolfnaya
 		Vladster_flomaster - Textures
 		Ashad Jackson ("ashadttt") 
