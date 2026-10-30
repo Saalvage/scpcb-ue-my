@@ -4284,11 +4284,15 @@ Function DrawItemTooltip(x%, y%, Width%, Height%, Desc%)
 	SetFontEx(fo\FontID[Font_Default])
 	Color(255, 255, 255)
 	Select Desc
+		;[Block]
 		Case it_scp1499, it_fine1499
+			;[Block]
 			Txt = "Gas Mask that teleports you to another dimension"
 			Width = Width - 68
+			;[End Block]
 		Default
 			Return
+		;[End Block]
 	End Select
 	
 	lines = GetLineAmount(Txt, fw, fh)
