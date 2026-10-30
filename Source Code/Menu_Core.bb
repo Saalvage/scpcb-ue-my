@@ -4270,6 +4270,41 @@ Function GetLineAmount%(Txt$, W%, H%, Leading# = 1.0)
 	Return(LinesShown + 1)
 End Function
 
+
+Function DrawItemTooltip(x%, y%, Width%, Height%, Desc%)
+	Local fx# = x + 10 * MenuScale
+	Local fy# = y + 10 * MenuScale
+	Local fw# = Width -20 * MenuScale
+	Local fh# = Height - 20 * MenuScale
+	Local lines% = 0, lines2% = 0
+	Local Txt$ = "", Txt2$ = ""
+	Local R% = 0, G% = 0, B% = 0
+	Local Extraspace% = 0
+	
+	SetFontEx(fo\FontID[Font_Default])
+	Color(255, 255, 255)
+	Select Desc
+		Case it_scp1499, it_fine1499
+			Txt = "Gas Mask that teleports you to another dimension"
+			Width = Width - 68
+		Default
+			Return
+	End Select
+	
+	lines% = GetLineAmount(Txt, fw, fh)
+	If Txt2$ = ""
+		RenderFrame(x, y, Width, ((StringHeight(Txt) * lines) + (15 + lines) * MenuScale) + Extraspace)
+	Else
+		lines2% = GetLineAmount(txt2, fw, fh)
+		RenderFrame(x, y, Width,(((StringHeight(Txt) * lines) + (15 + lines) * MenuScale) + (StringHeight(txt2) * lines2) + (10 + lines2) * MenuScale) + Extraspace)
+	EndIf
+	RowText(txt, fx, fy, fw, fh)
+	If Txt2$ <> ""
+		Color(R, G, B)
+		RowText(txt2, fx, (fy + (StringHeight(Txt)*lines) + (5 + lines) * MenuScale), fw, fh)
+	EndIf
+End Function
+
 Enum OptionTooltips
 	; ~ Graphics Tooltips Constants
 	Tooltip_BumpMapping
