@@ -4271,7 +4271,7 @@ Function GetLineAmount%(Txt$, W%, H%, Leading# = 1.0)
 End Function
 
 
-Function DrawItemTooltip(x%, y%, Width%, Height%, Desc%)
+Function DrawItemTooltip%(x%, y%, Width%, Height%, Desc%)
 	Local fx# = x + 10 * MenuScale
 	Local fy# = y + 10 * MenuScale
 	Local fw# = Width -20 * MenuScale
