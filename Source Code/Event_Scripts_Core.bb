@@ -7189,13 +7189,11 @@ Function UpdateEvent_Gate_B%(e.Events)
 			RenderLoading(0, GetLocalString("loading", "ending"))
 			
 			For n.NPCs = Each NPCs
-				RemoveNPC(n)
+				If n <> n_I\Curr106 And n <> n_I\Curr173 Then 
 			Next
 			n_I\Curr066 = Null
 			n_I\Curr049 = Null
 			n_I\Curr096 = Null
-			n_I\Curr106 = Null
-			n_I\Curr173 = Null
 			n_I\Curr457 = Null
 			n_I\Curr513_1 = Null
 			n_I\Curr999 = Null
