@@ -3515,6 +3515,8 @@ Function NullGame%(PlayButtonSFX% = True)
 	GrabbedEntity = 0
 	CameraPitch = 0.0
 	
+	If ShowMap <> 2 Then ShowMap = False
+	
 	For i = 0 To MaxHandIcons - 1
 		Delete(HandIcon[i])
 	Next

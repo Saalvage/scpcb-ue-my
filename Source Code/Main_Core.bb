@@ -4727,6 +4727,8 @@ Function RenderHUD%()
 	Local IconSpace% = 50 * MenuScale
 	Local ySpace% = 40 * MenuScale
 	
+	If ShowMap Then DrawMap()
+	
 	Color(255, 255, 255)
 	y = y - ySpace
 	If me\Stamina <= 25.0
@@ -4830,6 +4832,33 @@ Function RenderHUD%()
 			DrawBlock(t\IconID[ICON_268], CapHUDX - IconSpace, y + 1)
 		EndIf
 	EndIf
+End Function
+
+Global ShowMap% = False
+
+Function DrawMap()
+	Local cellSize% = 20 * MenuScale
+	Local startX% = opt\GraphicWidth - (MapGridSize + 1) * cellSize
+	Local startY% = opt\GraphicHeight - (MapGridSize + 1) * cellSize
+	
+	For r.Rooms = Each Rooms
+		If PlayerRoom\x = r\x And PlayerRoom\z = r\z Then
+			Color 0, 255, 0
+		Else
+			Color r\RoomTemplate\r, r\RoomTemplate\g, r\RoomTemplate\b
+		EndIf
+		
+		Local x% = startX + ((18 - (r\x / 8)) * cellSize)
+		Local y% = startY + ((r\z / 8) * cellSize)
+		
+		If MouseOn(x, y, cellSize, cellSize) 
+			Color 100, 255, 100
+			If mo\MouseHit1
+				Teleport(r)
+			EndIf
+		EndIf
+		Rect(x, y, cellSize, cellSize, 1)
+	Next
 End Function
 
 Function RenderDebugHUD%()

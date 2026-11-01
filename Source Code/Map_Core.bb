@@ -1535,6 +1535,7 @@ Type RoomTemplates
 	Field BoundsMinX#, BoundsMinY#, BoundsMinZ#
 	Field BoundsMaxX#, BoundsMaxY#, BoundsMaxZ#
 	Field BoundsMidX#, BoundsMidY#, BoundsMidZ#
+	Field R%, G%, B%
 End Type
 
 Enum RoomList
@@ -2186,6 +2187,9 @@ Function LoadRoomTemplates%(File$)
 			rt\Commonness = Clamp(IniGetInt(File, Loc, "Commonness"), 0, 100)
 			rt\DisableDecals = IniGetInt(File, Loc, "DisableDecals")
 			rt\DisableOverlapCheck = IniGetInt(File, Loc, "DisableOverlapCheck")
+			rt\R = IniGetInt(File, Loc, "R")
+			rt\G = IniGetInt(File, Loc, "G")
+			rt\B = IniGetInt(File, Loc, "B")
 		EndIf
 	Wend
 	
@@ -4717,6 +4721,15 @@ Function TeleportToRoom%(r.Rooms)
 	PlayerRoom = r
 	ResetRender()
 	me\InsideElevator = False
+End Function
+
+Function Teleport(r.Rooms)
+	If r\RoomCenter <> 0
+		TeleportEntity(me\Collider, EntityX(r\RoomCenter, True), EntityY(r\OBJ) + 0.5, EntityZ(r\RoomCenter, True), 0.3, True)
+	Else
+		TeleportEntity(me\Collider, EntityX(r\OBJ), EntityY(r\OBJ) + 0.5, EntityZ(r\OBJ))
+	EndIf
+	TeleportToRoom(r)
 End Function
 
 Function HideRoomsNoColl%(room.Rooms)

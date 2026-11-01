@@ -505,6 +505,7 @@ Function ExecuteConsoleCommand%(ConsoleMessage$)
 					CreateConsoleMsg("- newyear")
 					CreateConsoleMsg("- sanic")
 					CreateConsoleMsg("- weed")
+					CreateConsoleMsg("- showmap")
 					CreateConsoleMsg("******************************")
 					CreateConsoleMsg(GetLocalString("console", "help.command"))
 					CreateConsoleMsg("******************************")
@@ -745,6 +746,13 @@ Function ExecuteConsoleCommand%(ConsoleMessage$)
 					CreateConsoleMsg(Format(GetLocalString("console", "help.title"), "weed"))
 					CreateConsoleMsg("******************************")
 					CreateConsoleMultiMsg(GetLocalString("console", "help.weed"))
+					CreateConsoleMsg("******************************")
+					;[End Block]
+				Case "showmap"
+					;[Block]
+					CreateConsoleMsg(Format(GetLocalString("console", "help.title"), "showmap"))
+					CreateConsoleMsg("******************************")
+					CreateConsoleMultiMsg(GetLocalString("console", "help.showmap"))
 					CreateConsoleMsg("******************************")
 					;[End Block]
 				Case "infect"
@@ -1248,6 +1256,29 @@ Function ExecuteConsoleCommand%(ConsoleMessage$)
 				it.Items = CreateItem(StrTemp, Temp, EntityX(me\Collider, True) + Cos((360.0 / 20.0) * i) * Rnd(0.3, 0.5), EntityY(Camera, True), EntityZ(me\Collider, True) + Sin((360.0 / 20.0) * i) * Rnd(0.3, 0.5))
 			Next
 			PlaySound_Strict(LoadTempSound("SFX\Music\Using420J.ogg"))
+			;[End Block]
+		Case "showmap"
+			;[Block]
+			StrTemp$ = Lower(Right(ConsoleInput, Len(ConsoleInput) - Instr(ConsoleInput, " ")))
+			
+			Select StrTemp
+				Case "on", "1", "true"
+					ShowMap% = True
+				Case "off", "0", "false"
+					ShowMap% = False
+				Case "2"
+					ShowMap% = 2
+				Default
+					ShowMap% = Not ShowMap%
+			End Select
+			
+			If ShowMap% = 2 Then
+				CreateConsoleMsg("SHOW MAP ON (PERSISTENT)")
+			Else If ShowMap% Then
+				CreateConsoleMsg("SHOW MAP ON")
+			Else
+				CreateConsoleMsg("SHOW MAP OFF")
+			EndIf
 			;[End Block]
 		Case "godmode", "god"
 			;[Block]
