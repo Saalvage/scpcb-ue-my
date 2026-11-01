@@ -4836,7 +4836,7 @@ End Function
 
 Global ShowMap% = False
 
-Function DrawMap()
+Function DrawMap%()
 	Local cellSize% = 20 * MenuScale
 	Local startX% = opt\GraphicWidth - (MapGridSize + 1) * cellSize
 	Local startY% = opt\GraphicHeight - (MapGridSize + 1) * cellSize
