@@ -3827,42 +3827,44 @@ Function UpdateShadows%()
 	Local Dist#, UpdateDist# = PowTwo(Min(HideDistance, fog\FarDist))
 	
 	For shdw.Shadows = Each Shadows
-		Dist = EntityDistanceSquared(me\Collider, shdw\ParentOBJ)
-		If Dist < UpdateDist
-			Local x# = EntityX(shdw\ParentOBJ, True), y# = EntityY(shdw\ParentOBJ, True), z# = EntityZ(shdw\ParentOBJ, True)
-			
-			If shdw\Remove
-				; ~ Simplify the code and remove the shadow when NPC is dead
-				PositionEntity(shdw\OBJ, x, EntityY(shdw\OBJ, True), z, True)
-				If EntityHidden(shdw\OBJ) Then ShowEntity(shdw\OBJ)
+		If shdw\ParentOBJ
+			Dist = EntityDistanceSquared(me\Collider, shdw\ParentOBJ)
+			If Dist < UpdateDist
+				Local x# = EntityX(shdw\ParentOBJ, True), y# = EntityY(shdw\ParentOBJ, True), z# = EntityZ(shdw\ParentOBJ, True)
 				
-				shdw\Alpha = shdw\Alpha - (fps\Factor[0] * 0.005)
-				EntityAlpha(shdw\OBJ, shdw\Alpha)
-				If shdw\Alpha <= 0.0 Then RemoveShadow(shdw)
-			ElseIf EntityHidden(shdw\ParentOBJ) Lor (forest_event <> Null And forest_event\room = PlayerRoom And forest_event\EventState = 1.0) Lor SecondaryLightOn =< 0.3 Lor (PD_event\room = PlayerRoom And PD_event\EventState2 <> PD_FakeTunnelRoom)
-				If (Not EntityHidden(shdw\OBJ)) Then HideEntity(shdw\OBJ)
-			Else
-				If shdw\UpdateTimer <= 0.0
-					EntityPickMode(me\Collider, 0)
-					If LinePick(x, y + 0.15, z, 0.0, -10.0, 0.0) <> 0
-						PositionEntity(shdw\OBJ, x, PickedY() + 0.002, z, True)
-						RotateEntity(shdw\OBJ, EntityPitch(shdw\ParentOBJ, True), EntityYaw(shdw\ParentOBJ, True), EntityRoll(shdw\ParentOBJ, True), True)
-						AlignToVector(shdw\OBJ, -PickedNX(), -PickedNY(), -PickedNZ(), 3)
-						MoveEntity(shdw\OBJ, 0.0, 0.0, -0.002)
-					EndIf
-					EntityPickMode(me\Collider, 1)
-					shdw\UpdateTimer = 6.0
-				Else
-					shdw\UpdateTimer = shdw\UpdateTimer - fps\Factor[0]
-				EndIf
-				PositionEntity(shdw\OBJ, x, EntityY(shdw\OBJ, True), z, True)
-				
-				shdw\Alpha = Clamp(1.0 - (EntityDistanceSquared(me\Collider, shdw\OBJ) / fog\FarDist * 0.3), 0.0, 1.0)
-				If shdw\Alpha > 0.0
-					EntityAlpha(shdw\OBJ, shdw\Alpha)
+				If shdw\Remove
+					; ~ Simplify the code and remove the shadow when NPC is dead
+					PositionEntity(shdw\OBJ, x, EntityY(shdw\OBJ, True), z, True)
 					If EntityHidden(shdw\OBJ) Then ShowEntity(shdw\OBJ)
-				Else
+					
+					shdw\Alpha = shdw\Alpha - (fps\Factor[0] * 0.005)
+					EntityAlpha(shdw\OBJ, shdw\Alpha)
+					If shdw\Alpha <= 0.0 Then RemoveShadow(shdw)
+				ElseIf EntityHidden(shdw\ParentOBJ) Lor (forest_event <> Null And forest_event\room = PlayerRoom And forest_event\EventState = 1.0) Lor SecondaryLightOn =< 0.3 Lor (PD_event\room = PlayerRoom And PD_event\EventState2 <> PD_FakeTunnelRoom)
 					If (Not EntityHidden(shdw\OBJ)) Then HideEntity(shdw\OBJ)
+				Else
+					If shdw\UpdateTimer <= 0.0
+						EntityPickMode(me\Collider, 0)
+						If LinePick(x, y + 0.15, z, 0.0, -10.0, 0.0) <> 0
+							PositionEntity(shdw\OBJ, x, PickedY() + 0.002, z, True)
+							RotateEntity(shdw\OBJ, EntityPitch(shdw\ParentOBJ, True), EntityYaw(shdw\ParentOBJ, True), EntityRoll(shdw\ParentOBJ, True), True)
+							AlignToVector(shdw\OBJ, -PickedNX(), -PickedNY(), -PickedNZ(), 3)
+							MoveEntity(shdw\OBJ, 0.0, 0.0, -0.002)
+						EndIf
+						EntityPickMode(me\Collider, 1)
+						shdw\UpdateTimer = 6.0
+					Else
+						shdw\UpdateTimer = shdw\UpdateTimer - fps\Factor[0]
+					EndIf
+					PositionEntity(shdw\OBJ, x, EntityY(shdw\OBJ, True), z, True)
+					
+					shdw\Alpha = Clamp(1.0 - (EntityDistanceSquared(me\Collider, shdw\OBJ) / fog\FarDist * 0.3), 0.0, 1.0)
+					If shdw\Alpha > 0.0
+						EntityAlpha(shdw\OBJ, shdw\Alpha)
+						If EntityHidden(shdw\OBJ) Then ShowEntity(shdw\OBJ)
+					Else
+						If (Not EntityHidden(shdw\OBJ)) Then HideEntity(shdw\OBJ)
+					EndIf
 				EndIf
 			EndIf
 		EndIf
