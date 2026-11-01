@@ -3291,8 +3291,10 @@ Function UpdateEvent_Cont2_1123%(e.Events)
 				TFormPoint(-139.0, 5006.0, 655.0, e\room\OBJ, 0)
 				e\room\NPC[0] = CreateNPC(NPCTypeD, TFormedX(), TFormedY(), TFormedZ())
 				e\room\NPC[0]\State = -1.0
+				RemoveShadow(e\room\NPC[0]\Shadow)
 				FreeEntity(e\room\NPC[0]\OBJ) : e\room\NPC[0]\OBJ = 0
 				e\room\NPC[0]\OBJ = LoadAnimMesh_Strict("GFX\NPCs\nazi_officer.b3d")
+				e\room\NPC[0]\Shadow = CreateShadow(e\room\NPC[0]\OBJ, e\room\NPC[0]\CollRadius * 1.8, e\room\NPC[0]\CollRadius * 1.8)
 				
 				Local Scale# = 0.51 / MeshWidth(e\room\NPC[0]\OBJ)
 				
