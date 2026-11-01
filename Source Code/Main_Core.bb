@@ -4843,16 +4843,16 @@ Function DrawMap()
 	
 	For r.Rooms = Each Rooms
 		If PlayerRoom\x = r\x And PlayerRoom\z = r\z Then
-			Color 0, 255, 0
+			Color(0, 255, 0)
 		Else
-			Color r\RoomTemplate\r, r\RoomTemplate\g, r\RoomTemplate\b
+			Color(r\RoomTemplate\r, r\RoomTemplate\g, r\RoomTemplate\b)
 		EndIf
 		
 		Local x% = startX + ((18 - (r\x / 8)) * cellSize)
 		Local y% = startY + ((r\z / 8) * cellSize)
 		
 		If MouseOn(x, y, cellSize, cellSize) 
-			Color 100, 255, 100
+			Color(100, 255, 100)
 			If mo\MouseHit1
 				Teleport(r)
 			EndIf
