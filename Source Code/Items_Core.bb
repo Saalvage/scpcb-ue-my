@@ -728,9 +728,8 @@ Function PickItem%(item.Items, PlayPickUpSound% = True)
 			Exit
 		EndIf
 	Next
-	If PlayPickUpSound
-		me\SndVolume = Max(2.0, me\SndVolume)
-	EndIf
+
+	If PlayPickUpSound Then me\SndVolume = Max(2.0, me\SndVolume)
 	
 	CatchErrors("Uncaught: PickItem()")
 End Function
