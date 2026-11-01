@@ -3508,7 +3508,8 @@ Function UpdateEvent_Room2C_GW_LCZ%(e.Events)
 							RotateEntity(e\room\Objects[0], 0.0, Rnd(360.0), 0.0, True)
 							EntityType(e\room\Objects[0], HIT_MAP)
 							
-							TeleportEntity(n_I\Curr173\Collider, x, y, z, n_I\Curr173\CollRadius, True)
+							PositionEntity(n_I\Curr173\Collider, x, y, z, True)
+							ResetEntity(n_I\Curr173\Collider)
 							n_I\Curr173\CurrentRoom = e\room
 							
 							e\EventState = 4.0
