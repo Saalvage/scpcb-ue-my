@@ -3827,7 +3827,7 @@ Function UpdateShadows%()
 	Local Dist#, UpdateDist# = PowTwo(Min(HideDistance, fog\FarDist))
 	
 	For shdw.Shadows = Each Shadows
-		If shdw\ParentOBJ
+		If shdw\ParentOBJ <> Null
 			Dist = EntityDistanceSquared(me\Collider, shdw\ParentOBJ)
 			If Dist < UpdateDist
 				Local x# = EntityX(shdw\ParentOBJ, True), y# = EntityY(shdw\ParentOBJ, True), z# = EntityZ(shdw\ParentOBJ, True)
