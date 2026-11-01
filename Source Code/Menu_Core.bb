@@ -4299,12 +4299,12 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 		RenderFrame(x, y, Width, ((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + Extraspace)
 	Else
 		Lines2 = GetLineAmount(Txt2, fw, fh)
-		RenderFrame(x, y, Width,(((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + (StringHeight(Txt2) * Lines2) + (10 + Lines2) * MenuScale) + Extraspace)
+		RenderFrame(x, y, Width, (((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + (StringHeight(Txt2) * Lines2) + (10 + Lines2) * MenuScale) + Extraspace)
 	EndIf
 	RowText(Txt, fx, fy, fw, fh)
 	If Txt2 <> ""
 		Color(R, G, B)
-		RowText(Txt2, fx, (fy + (StringHeight(Txt)*Lines) + (5 + Lines) * MenuScale), fw, fh)
+		RowText(Txt2, fx, (fy + (StringHeight(Txt) * Lines) + (5 + Lines) * MenuScale), fw, fh)
 	EndIf
 End Function
 
