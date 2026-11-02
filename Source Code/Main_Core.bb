@@ -3044,7 +3044,7 @@ Function UpdateUseItem%(item.Items)
 								I_1499\PrevZ = EntityZ(me\Collider)
 								
 								If I_1499\x = 0.0 And I_1499\y = 0.0 And I_1499\z = 0.0
-									PositionEntity(me\Collider, r\x + 6086.0 * RoomScale, r\y + 304.0 * RoomScale, r\z + 2292.5 * RoomScale)
+									PositionEntity(me\Collider, r\x + 6086.0 * RoomScale, r\y + 128.0 * RoomScale, r\z + 2292.5 * RoomScale)
 									RotateEntity(me\Collider, 0.0, 90.0, 0.0, True)
 								Else
 									PositionEntity(me\Collider, I_1499\x, I_1499\y + 0.05, I_1499\z)
