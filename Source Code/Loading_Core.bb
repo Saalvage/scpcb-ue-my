@@ -1641,7 +1641,7 @@ MusicCHN = StreamSound_Strict("SFX\Music\" + Music[2] + ".ogg", opt\MusicVolume,
 Global NowPlaying% = 2, ShouldPlay% = 11
 Global CurrMusic% = True
 
-Dim OpenDoorSFX%(9, 3), CloseDoorSFX%(8, 3)
+Dim OpenDoorSFX%(9, 3), CloseDoorSFX%(9, 3)
 
 Type SoundInstance
 	Field RoomAmbience%[12]
