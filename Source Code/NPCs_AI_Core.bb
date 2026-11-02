@@ -2165,39 +2165,36 @@ Function UpdateNPCType106%(n.NPCs)
 			Case 2.0 ; ~ Spawn
 				;[Block]
 				ShouldPlay = 66
-				If n\EnemyX <> 0.0 Lor n\EnemyY <> 0.0 Lor n\EnemyZ <> 0.0
-					Pvt = GetDummyPivot(n\EnemyX, n\EnemyY, n\EnemyZ)
-					TurnEntity(Pvt, 90.0, 0.0, 0.0)
-					If EntityPick(Pvt, 10.0) Then n\EnemyY = PickedY()
-					
-					PositionEntity(n\Collider, n\EnemyX, n\EnemyY, n\EnemyZ)
-					ResetEntity(n\Collider)
-					de.Decals = CreateDecal(DECAL_CORROSIVE_1, n\EnemyX, n\EnemyY + 0.005, n\EnemyZ, 90.0, Rnd(360.0), 0.0, 0.05, 0.8)
-					de\SizeChange = 0.001
-					EntityParent(de\OBJ, PlayerRoom\OBJ)
-					
-					SetNPCFrame(n, 110.0)
-					
-					PlaySound_Strict(snd_I\DecaySFX[0])
-					
-					n\State2 = 0.0
-					n\EnemyX = 0.0 : n\EnemyY = 0.0 : n\EnemyZ = 0.0
-				Else
-					If n\Frame < 259.0
-						If (Not (chs\NoTarget Lor I_268\InvisibilityOn))
-							PointEntity(n\OBJ, me\Collider)
-							RotateEntity(n\Collider, 0.0, CurveAngle(EntityYaw(n\OBJ), EntityYaw(n\Collider), 100.0), 0.0, True)
-						EndIf
-						AnimateNPC(n, 111.0, 259.0, 0.15 + (0.075 * (SelectedDifficulty\AggressiveNPCs Lor PlayerRoom\RoomTemplate\RoomID = r_gate_a)), False)
-						If PlayerRoom\RoomTemplate\RoomID = r_dimension_1499 And PlayerRoom\RoomTemplate\RoomID <> r_gate_a Then
-							n\State2 = Rnd(3000.0, 3500.0)
-							SetNPCFrame(n, 259.0)
-							n\State = 3.0
-						EndIf
+				If n\Idle = 0
+					If n\EnemyX <> 0.0 Lor n\EnemyY <> 0.0 Lor n\EnemyZ <> 0.0
+						Pvt = GetDummyPivot(n\EnemyX, n\EnemyY, n\EnemyZ)
+						TurnEntity(Pvt, 90.0, 0.0, 0.0)
+						If EntityPick(Pvt, 10.0) Then n\EnemyY = PickedY()
+						
+						PositionEntity(n\Collider, n\EnemyX, n\EnemyY, n\EnemyZ)
+						ResetEntity(n\Collider)
+						de.Decals = CreateDecal(DECAL_CORROSIVE_1, n\EnemyX, n\EnemyY + 0.005, n\EnemyZ, 90.0, Rnd(360.0), 0.0, 0.05, 0.8)
+						de\SizeChange = 0.001
+						EntityParent(de\OBJ, PlayerRoom\OBJ)
+						
+						SetNPCFrame(n, 110.0)
+						
+						PlaySound_Strict(snd_I\DecaySFX[0])
+						
+						n\State2 = 0.0
+						n\EnemyX = 0.0 : n\EnemyY = 0.0 : n\EnemyZ = 0.0
 					Else
-						GiveAchievement("106")
-						n\State2 = Rnd(3000.0, 3500.0)
-						n\State = 3.0 + (PlayerRoom\RoomTemplate\RoomID = r_gate_a)
+						If n\Frame < 259.0
+							If (Not (chs\NoTarget Lor I_268\InvisibilityOn))
+								PointEntity(n\OBJ, me\Collider)
+								RotateEntity(n\Collider, 0.0, CurveAngle(EntityYaw(n\OBJ), EntityYaw(n\Collider), 100.0), 0.0, True)
+							EndIf
+							AnimateNPC(n, 111.0, 259.0, 0.15 + (0.075 * (SelectedDifficulty\AggressiveNPCs Lor PlayerRoom\RoomTemplate\RoomID = r_gate_a)), False)
+						Else
+							GiveAchievement("106")
+							n\State2 = Rnd(3000.0, 3500.0)
+							n\State = 3.0 + (PlayerRoom\RoomTemplate\RoomID = r_gate_a)
+						EndIf
 					EndIf
 				EndIf
 				;[End Block]
