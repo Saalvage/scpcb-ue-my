@@ -3532,7 +3532,7 @@ Function NullGame%(PlayButtonSFX% = True)
 	BreachTime = 0
 	
 	If Camera <> 0 Then FreeEntity(Camera) : Camera = 0
-	If MainSky <> 0 Then FreeEntity(MainSky) : MainSky = 0
+	If SkyMain <> 0 Then FreeEntity(SkyMain) : SkyMain = 0
 	If Sky106 <> 0 Then FreeEntity(Sky106) : Sky106 = 0
 	
 	CurrTrisAmount = 0

@@ -1,4 +1,4 @@
-Global MainSky%, Sky106%
+Global SkyMain%, Sky106%
 
 Function CreateSky%(FileName$, Parent% = 0)
 	Local Sky%, Face%, Direction$, Vert%

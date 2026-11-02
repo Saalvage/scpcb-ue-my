@@ -2529,7 +2529,7 @@ Function LoadGameQuick%(File$)
 	
 	; ~ Free some entities that could potentially cause memory leaks (for the endings)
 	; ~ This is only required for the LoadGameQuick function, as the other one is from the menu where everything is already deleted anyways
-	If MainSky <> 0 Then FreeEntity(MainSky) : MainSky = 0
+	If SkyMain <> 0 Then FreeEntity(SkyMain) : SkyMain = 0
 	For r.Rooms = Each Rooms
 		Select r\RoomTemplate\RoomID
 			Case r_cont1_035
