@@ -6733,8 +6733,8 @@ Function UpdateEvent_Gate_A%(e.Events)
 			
 			RenderLoading(30, GetLocalString("loading", "ending"))
 			
-			Sky = CreateSky("GFX\Map\Textures\sky")
-			RotateEntity(Sky, 0.0, e\room\Angle, 0.0)
+			MainSky = CreateSky("GFX\Map\Textures\sky")
+			RotateEntity(MainSky, 0.0, e\room\Angle, 0.0)
 			
 			RenderLoading(60, GetLocalString("loading", "ending"))
 			
@@ -6792,7 +6792,7 @@ Function UpdateEvent_Gate_A%(e.Events)
 			Local r.Rooms, p.Particles
 			Local Dist#, Pvt%, SqrValue#, SinValue#
 			
-			UpdateSky(Sky)
+			UpdateSky(MainSky)
 			UpdateBreathSteam()
 			
 			CanSave = 1
@@ -7230,8 +7230,8 @@ Function UpdateEvent_Gate_B%(e.Events)
 			
 			RenderLoading(60, GetLocalString("loading", "ending"))
 			
-			Sky = CreateSky("GFX\Map\Textures\sky")
-			RotateEntity(Sky, 0.0, e\room\Angle - 90.0, 0.0)
+			MainSky = CreateSky("GFX\Map\Textures\sky")
+			RotateEntity(MainSky, 0.0, e\room\Angle - 90.0, 0.0)
 			
 			ResetEntity(me\Collider)
 			RotateEntity(me\Collider, 0.0, EntityYaw(me\Collider) + (e\room\Angle + 180.0), 0.0)
@@ -7250,7 +7250,7 @@ Function UpdateEvent_Gate_B%(e.Events)
 			
 			RenderLoading(100)
 		Else
-			UpdateSky(Sky)
+			UpdateSky(MainSky)
 			UpdateBreathSteam()
 			
 			CanSave = 1
