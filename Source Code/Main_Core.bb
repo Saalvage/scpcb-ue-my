@@ -4853,9 +4853,7 @@ Function DrawMap%()
 		
 		If MouseOn(x, y, cellSize, cellSize) 
 			Color(100, 255, 100)
-			If mo\MouseHit1
-				Teleport(r)
-			EndIf
+			If mo\MouseHit1 Then Teleport(r)
 		EndIf
 		Rect(x, y, cellSize, cellSize, 1)
 	Next
