@@ -149,7 +149,7 @@ Function UpdateMainMenu%()
 			If mm\QuitMenu = 0
 				RandomSeed = ""
 				If UpdateMenuButton(x, y, Width, Height, GetLocalString("menu", "new"), Font_Default_Big)
-					If opt\NumericSeed
+					If opt\SpeedrunMode
 						RandomSeed = MilliSecs()
 					Else
 						If Rand(15) = 1
@@ -857,7 +857,7 @@ Function UpdateMainMenu%()
 						
 						y = y + 30 * MenuScale
 						
-						opt\NumericSeed = UpdateMenuTick(x, y, opt\NumericSeed)
+						opt\SpeedrunMode = UpdateMenuTick(x, y, opt\SpeedrunMode)
 						
 						y = y + (30 * MenuScale)
 						
@@ -1632,7 +1632,7 @@ Function RenderMainMenu%()
 					y = y + (30 * MenuScale)
 					
 					TextEx(x, y + (5 * MenuScale), GetLocalString("options", "uns"))
-					If MouseOn(x + (290 * MenuScale), y, MouseOnCoord, MouseOnCoord) And OnSliderID = 0 Then RenderOptionsTooltip(tX, tY, tW, tH, Tooltip_NumericSeed)
+					If MouseOn(x + (290 * MenuScale), y, MouseOnCoord, MouseOnCoord) And OnSliderID = 0 Then RenderOptionsTooltip(tX, tY, tW, tH, Tooltip_SpeedrunMode)
 					
 					y = y + (30 * MenuScale)
 					
@@ -2404,7 +2404,7 @@ Function UpdatePauseMenu%()
 						
 						y = y + (30 * MenuScale)
 						
-						opt\NumericSeed = UpdateMenuTick(x, y, opt\NumericSeed)
+						opt\SpeedrunMode = UpdateMenuTick(x, y, opt\SpeedrunMode)
 						
 						y = y + (30 * MenuScale)
 						
@@ -2917,7 +2917,7 @@ Function RenderPauseMenu%()
 						y = y + (30 * MenuScale)
 						
 						TextEx(x, y + (5 * MenuScale), GetLocalString("options", "uns"))
-						If MouseOn(x + (270 * MenuScale), y, MouseOnCoord, MouseOnCoord) And OnSliderID = 0 Then RenderOptionsTooltip(tX, tY, tW, tH, Tooltip_NumericSeed)
+						If MouseOn(x + (270 * MenuScale), y, MouseOnCoord, MouseOnCoord) And OnSliderID = 0 Then RenderOptionsTooltip(tX, tY, tW, tH, Tooltip_SpeedrunMode)
 						
 						y = y + (30 * MenuScale)
 						
@@ -4338,7 +4338,7 @@ Enum OptionTooltips
 	Tooltip_ControlConfiguration
 	; ~ Advanced Tooltips Constants
 	Tooltip_HUD
-	Tooltip_NumericSeed
+	Tooltip_SpeedrunMode
 	Tooltip_Console
 	Tooltip_AchievementPopups
 	Tooltip_FPS
@@ -4508,9 +4508,9 @@ Function RenderOptionsTooltip%(x%, y%, Width%, Height%, Option%, Value# = 0.0)
 			;[Block]
 			Txt = GetLocalString("tooltip", "hud")
 			;[End Block]
-		Case Tooltip_NumericSeed
+		Case Tooltip_SpeedrunMode
 			;[Block]
-			Txt = GetLocalString("tooltip", "uns")
+			Txt = GetLocalString("tooltip", "esm")
 			;[End Block]
 		Case Tooltip_Console
 			;[Block]

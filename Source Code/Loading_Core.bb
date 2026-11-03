@@ -2862,8 +2862,6 @@ Function LoadData%()
 	
 	QuickLoadPercent = -1
 	
-	EscapeSecondsTimer = 70.0
-	
 	opttimer.OptimizationTimer = New OptimizationTimer
 	chs.Cheats = New Cheats
 	me.Player = New Player

@@ -783,6 +783,15 @@ Function RenderMessages%()
 		TextEx(CoordEx, CoordEx, "FPS: " + GetFPS())
 		SetFontEx(fo\FontID[Font_Default])
 	EndIf
+	
+	If opt\SpeedrunMode
+		SetFontEx(fo\FontID[Font_Default_Big])
+		Local Seconds% = EscapeTimer Mod 60
+		Local Minutes% = EscapeTimer / 60
+		Local Hours% = Minutes / 60
+		TextEx(1500 * MenuScale, 20 * MenuScale, Hours + ":" + Minutes + ":" + Seconds)
+		SetFontEx(fo\FontID[Font_Default])
+	EndIf
 End Function
 
 Function CreateHintMsg%(Txt$, Sec# = 6.0, Tutorial% = False)
@@ -6008,11 +6017,11 @@ Function UpdateEscapeTimer%()
 		EndIf
 	Next
 	
-	EscapeSecondsTimer = EscapeSecondsTimer - fps\Factor[0]
-	If EscapeSecondsTimer <= 0.0
+	EscapeSecondsTimer = EscapeSecondsTimer + fps\Factor[0]
+	If EscapeSecondsTimer >= 70.0
 		EscapeTimer = EscapeTimer + 1
 		If BreachTime > 0 Then BreachTime = BreachTime + 1
-		EscapeSecondsTimer = 70.0
+		EscapeSecondsTimer = 0.0
 	EndIf
 End Function
 

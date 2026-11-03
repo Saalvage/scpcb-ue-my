@@ -215,7 +215,7 @@ Type Options
 	Field AchvMsgEnabled%
 	Field CanOpenConsole%
 	Field HUDEnabled%
-	Field NumericSeed%
+	Field SpeedrunMode%
 	Field ShowFPS%
 	Field FrameLimit%, CurrFrameLimit#
 	Field AutoSaveEnabled%
@@ -399,7 +399,7 @@ Function LoadOptionsINI%()
 	;[Block]
 	opt\HUDEnabled = IniGetInt(OptionFile, "Advanced", "Enable HUD", True)
 	
-	opt\NumericSeed = IniGetInt(OptionFile, "Advanced", "Numeric Seed", False)
+	opt\SpeedrunMode = IniGetInt(OptionFile, "Advanced", "Speedrun Mode", False)
 	
 	opt\CanOpenConsole = IniGetInt(OptionFile, "Advanced", "Enable Console", False)
 	
@@ -520,7 +520,7 @@ Function SaveOptionsINI%(SaveGlobal% = False)
 	;[Block]
 	IniWriteInt(OptionFile, "Advanced", "Enable HUD", opt\HUDEnabled)
 	
-	IniWriteInt(OptionFile, "Advanced", "Numeric Seed", opt\NumericSeed)
+	IniWriteInt(OptionFile, "Advanced", "Speedrun Mode", opt\SpeedrunMode)
 	
 	IniWriteInt(OptionFile, "Advanced", "Enable Console", opt\CanOpenConsole)
 	
@@ -637,7 +637,7 @@ Function ResetOptionsINI%()
 	;[Block]
 	opt\HUDEnabled = True
 	
-	opt\NumericSeed = False
+	opt\SpeedrunMode = False
 	
 	opt\CanOpenConsole = False
 	
