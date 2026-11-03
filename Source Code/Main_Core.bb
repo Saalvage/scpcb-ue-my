@@ -4727,7 +4727,7 @@ Function RenderHUD%()
 	Local IconSpace% = 50 * MenuScale
 	Local ySpace% = 40 * MenuScale
 	
-	If ShowMap Then DrawMap()
+	If ShowMap Then RenderMap()
 	
 	Color(255, 255, 255)
 	y = y - ySpace
@@ -4836,7 +4836,7 @@ End Function
 
 Global ShowMap% = False
 
-Function DrawMap%()
+Function RenderMap%()
 	Local CellSize% = 20 * MenuScale
 	Local StartX% = opt\GraphicWidth - (MapGridSize + 1) * CellSize
 	Local StartY% = opt\GraphicHeight - (MapGridSize + 1) * CellSize
@@ -4852,7 +4852,7 @@ Function DrawMap%()
 		Local x% = StartX + ((18 - (r\x / 8)) * CellSize)
 		Local y% = StartY + ((r\z / 8) * CellSize)
 		
-		If MouseOn(x, y, CellSize, CellSize) 
+		If MouseOn(x, y, CellSize, CellSize)
 			Color(100, 255, 100)
 			If mo\MouseHit1 Then Teleport(r)
 		EndIf
