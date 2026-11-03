@@ -1259,22 +1259,30 @@ Function ExecuteConsoleCommand%(ConsoleMessage$)
 			;[End Block]
 		Case "showmap"
 			;[Block]
-			StrTemp$ = Lower(Right(ConsoleInput, Len(ConsoleInput) - Instr(ConsoleInput, " ")))
+			StrTemp = Lower(Right(ConsoleInput, Len(ConsoleInput) - Instr(ConsoleInput, " ")))
 			
 			Select StrTemp
 				Case "on", "1", "true"
-					ShowMap% = True
+					;[Block]
+					ShowMap = True
+					;[End Block]
 				Case "off", "0", "false"
-					ShowMap% = False
+					;[Block]
+					ShowMap = False
+					;[End Block]
 				Case "2"
-					ShowMap% = 2
+					;[Block]
+					ShowMap = 2
+					;[End Block]
 				Default
-					ShowMap% = Not ShowMap%
+					;[Block]
+					ShowMap = (Not ShowMap)
+					;[End Block]
 			End Select
 			
-			If ShowMap% = 2 Then
+			If ShowMap = 2
 				CreateConsoleMsg("SHOW MAP ON (PERSISTENT)")
-			Else If ShowMap% Then
+			ElseIf ShowMap
 				CreateConsoleMsg("SHOW MAP ON")
 			Else
 				CreateConsoleMsg("SHOW MAP OFF")
@@ -1298,6 +1306,7 @@ Function ExecuteConsoleCommand%(ConsoleMessage$)
 					chs\GodMode = (Not chs\GodMode)
 					;[End Block]
 			End Select
+			
 			If chs\GodMode
 				CreateConsoleMsg(GetLocalString("console", "god.on"))
 			Else

@@ -4837,25 +4837,26 @@ End Function
 Global ShowMap% = False
 
 Function DrawMap%()
-	Local cellSize% = 20 * MenuScale
-	Local startX% = opt\GraphicWidth - (MapGridSize + 1) * cellSize
-	Local startY% = opt\GraphicHeight - (MapGridSize + 1) * cellSize
+	Local CellSize% = 20 * MenuScale
+	Local StartX% = opt\GraphicWidth - (MapGridSize + 1) * CellSize
+	Local StartY% = opt\GraphicHeight - (MapGridSize + 1) * CellSize
 	
+	Local r.Rooms
 	For r.Rooms = Each Rooms
-		If PlayerRoom\x = r\x And PlayerRoom\z = r\z Then
+		If PlayerRoom\x = r\x And PlayerRoom\z = r\z
 			Color(0, 255, 0)
 		Else
-			Color(r\RoomTemplate\r, r\RoomTemplate\g, r\RoomTemplate\b)
+			Color(r\RoomTemplate\R, r\RoomTemplate\G, r\RoomTemplate\B)
 		EndIf
 		
-		Local x% = startX + ((18 - (r\x / 8)) * cellSize)
-		Local y% = startY + ((r\z / 8) * cellSize)
+		Local x% = StartX + ((18 - (r\x / 8)) * CellSize)
+		Local y% = StartY + ((r\z / 8) * CellSize)
 		
-		If MouseOn(x, y, cellSize, cellSize) 
+		If MouseOn(x, y, CellSize, CellSize) 
 			Color(100, 255, 100)
 			If mo\MouseHit1 Then Teleport(r)
 		EndIf
-		Rect(x, y, cellSize, cellSize, 1)
+		Rect(x, y, CellSize, CellSize, 1)
 	Next
 End Function
 
