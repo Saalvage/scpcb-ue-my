@@ -47,6 +47,7 @@ Type Cheats
 	Field InfiniteStamina%
 	Field SuperMan%, SuperManTimer#
 	Field DebugHUD%
+	Field ShowMap%
 End Type
 
 Global chs.Cheats
@@ -60,6 +61,7 @@ Function ClearCheats%()
 	chs\SuperMan = False
 	chs\SuperManTimer = 0.0
 	chs\DebugHUD = 0
+	If chs\ShowMap <> 2 Then chs\ShowMap = False
 End Function
 
 Function InitCheats%()
@@ -71,6 +73,7 @@ Function InitCheats%()
 	chs\SuperMan = False
 	chs\SuperManTimer = 0.0
 	chs\DebugHUD = Rand(3)
+	chs\ShowMap = False
 End Function
 
 Function ResetNegativeStats%(Revive% = False)
@@ -1264,29 +1267,36 @@ Function ExecuteConsoleCommand%(ConsoleMessage$)
 			Select StrTemp
 				Case "on", "1", "true"
 					;[Block]
-					ShowMap = True
+					chs\ShowMap = 1
 					;[End Block]
 				Case "off", "0", "false"
 					;[Block]
-					ShowMap = False
+					chs\ShowMap = 0
 					;[End Block]
 				Case "2"
 					;[Block]
-					ShowMap = 2
+					chs\ShowMap = 2
 					;[End Block]
 				Default
 					;[Block]
-					ShowMap = (Not ShowMap)
+					chs\ShowMap = (Not chs\ShowMap)
 					;[End Block]
 			End Select
 			
-			If ShowMap = 2
-				CreateConsoleMsg("SHOW MAP ON (PERSISTENT)")
-			ElseIf ShowMap
-				CreateConsoleMsg("SHOW MAP ON")
-			Else
-				CreateConsoleMsg("SHOW MAP OFF")
-			EndIf
+			Select chs\ShowMap
+				Case 1
+					;[Block]
+					CreateConsoleMsg("SHOW MAP ON")
+					;[End Block]
+				Case 2
+					;[Block]
+					CreateConsoleMsg("SHOW MAP ON (PERSISTENT)")
+					;[End Block]
+				Default
+					;[Block]
+					CreateConsoleMsg("SHOW MAP OFF")
+					;[End Block]
+			End Select
 			;[End Block]
 		Case "godmode", "god"
 			;[Block]

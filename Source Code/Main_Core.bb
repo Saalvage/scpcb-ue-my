@@ -4727,7 +4727,7 @@ Function RenderHUD%()
 	Local IconSpace% = 50 * MenuScale
 	Local ySpace% = 40 * MenuScale
 	
-	If ShowMap Then RenderMap()
+	If chs\ShowMap Then RenderMap()
 	
 	Color(255, 255, 255)
 	y = y - ySpace
@@ -4833,8 +4833,6 @@ Function RenderHUD%()
 		EndIf
 	EndIf
 End Function
-
-Global ShowMap% = False
 
 Function RenderMap%()
 	Local CellSize% = 20 * MenuScale
