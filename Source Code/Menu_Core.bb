@@ -1631,7 +1631,7 @@ Function RenderMainMenu%()
 					
 					y = y + (30 * MenuScale)
 					
-					TextEx(x, y + (5 * MenuScale), GetLocalString("options", "uns"))
+					TextEx(x, y + (5 * MenuScale), GetLocalString("options", "esm"))
 					If MouseOn(x + (290 * MenuScale), y, MouseOnCoord, MouseOnCoord) And OnSliderID = 0 Then RenderOptionsTooltip(tX, tY, tW, tH, Tooltip_SpeedrunMode)
 					
 					y = y + (30 * MenuScale)
@@ -2916,7 +2916,7 @@ Function RenderPauseMenu%()
 						
 						y = y + (30 * MenuScale)
 						
-						TextEx(x, y + (5 * MenuScale), GetLocalString("options", "uns"))
+						TextEx(x, y + (5 * MenuScale), GetLocalString("options", "esm"))
 						If MouseOn(x + (270 * MenuScale), y, MouseOnCoord, MouseOnCoord) And OnSliderID = 0 Then RenderOptionsTooltip(tX, tY, tW, tH, Tooltip_SpeedrunMode)
 						
 						y = y + (30 * MenuScale)
