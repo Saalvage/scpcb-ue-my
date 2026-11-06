@@ -4281,10 +4281,46 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 	
 	SetFontEx(fo\FontID[Font_Default])
 	Color(255, 255, 255)
-	Select Desc
+	; ~ replace with GetLocalString pls
+	Select Desc 
+		Case it_key0, it_key1, it_key2, it_key3, it_key4, it_key5, it_key6, it_keyomni
+			;[Block]
+			Txt = "Security card used to unlock key card locked rooms"
+			;[End Block]
+		Case it_paper
+			;[Block]
+			Txt = "Papers are used to gain knowledge throughout the facility"
+			;[End Block]
 		Case it_scp1499, it_fine1499
 			;[Block]
-			Txt = "Gas Mask that teleports you to another dimension" ; ~ replace with GetLocalString pls
+			Txt = "Gas Mask that teleports you to another dimension"
+			;[End Block]
+		Case it_scp1025
+			;[Block]
+			Txt = "An encyclopedia filled with various common diseases that give the reader the read page's disease"
+		Case it_fine1025
+			;[Block]
+			Txt = "An encyclopedia filled with various uncommon diseases that give the reader the read page's disease"
+			;[End Block]
+		Case it_scp500
+			;[Block]
+			Txt = "A pill bottle containing several of the SCP-500-01 instances"
+			;[End Block]
+		Case it_scp500pill
+			;[Block]
+			Txt = "A pill that can cure any ailment."
+			;[End Block]
+		Case it_scp714, it_coarse714, it_fine714
+			;[Block]
+			Txt = "Green Jaded Ring that protects you from various cognitohazardous effects and chemicals"
+			;[End Block]
+		Case it_scp513
+			;[Block]
+			Txt = "A rusty cowbell that summons an entity that haunts those who hear it"
+			;[End Block]
+		Case it_fine513
+			;[Block]
+			Txt = "A shiny cowbell that summons an entity that haunts those who hear it"
 			;[End Block]
 		Default
 			;[Block]
