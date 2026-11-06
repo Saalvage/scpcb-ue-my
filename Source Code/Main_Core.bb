@@ -5235,6 +5235,7 @@ Function RenderGUI%()
 	Local INVENTORY_GFX_SPACING% = 35 * MenuScale
 	Local InvImgSize% = (64 * MenuScale) / 2
 	Local MaxItemAmountHalf% = MaxItemAmount / 2
+	Local ShowItemDesc% = -1
 	
 	If OtherOpen <> Null
 		Local TempX% = 0
@@ -5264,7 +5265,7 @@ Function RenderGUI%()
 					SetFontEx(fo\FontID[Font_Default])
 					Color(255, 255, 255)
 					TextEx(x + (INVENTORY_GFX_SIZE / 2), y + INVENTORY_GFX_SIZE + INVENTORY_GFX_SPACING - (15 * MenuScale), OtherOpen\SecondInv[n]\ItemTemplate\DisplayName, True)
-					RenderItemTooltip(MousePosX, MousePosY, 300, 300, OtherOpen\SecondInv[n]\ItemTemplate\ID)
+					ShowItemDesc = OtherOpen\SecondInv[n]\ItemTemplate\ID
 				EndIf
 			EndIf
 			
@@ -5436,7 +5437,7 @@ Function RenderGUI%()
 						SetFontEx(fo\FontID[Font_Default])
 						Color(255, 255, 255)
 						TextEx(x + (INVENTORY_GFX_SIZE / 2), y + INVENTORY_GFX_SIZE + INVENTORY_GFX_SPACING - (15 * MenuScale), Inventory(n)\DisplayName, True)
-						RenderItemTooltip(MousePosX, MousePosY, 300, 300, Inventory(n)\ItemTemplate\ID)
+						ShowItemDesc = Inventory(n)\ItemTemplate\ID
 					EndIf
 				EndIf
 			EndIf
@@ -5453,6 +5454,8 @@ Function RenderGUI%()
 				If MouseSlot = 66 Lor SelectedItem <> Inventory(MouseSlot) Then DrawBlock(SelectedItem\InvImg, MousePosX - InvImgSize, MousePosY - InvImgSize)
 			EndIf
 		EndIf
+		
+		If ShowItemDesc <> - 1 Then RenderItemTooltip(MousePosX, MousePosY, 300, 300, ShowItemDesc)
 		
 		RenderCursor()
 	Else
