@@ -4278,7 +4278,6 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 	Local Lines% = 0, Lines2% = 0
 	Local Txt$ = "", Txt2$ = ""
 	Local R% = 0, G% = 0, B% = 0
-	Local Extraspace% = 0
 	
 	SetFontEx(fo\FontID[Font_Default])
 	Color(255, 255, 255)
@@ -4286,7 +4285,7 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 		Case it_scp1499, it_fine1499
 			;[Block]
 			Txt = "Gas Mask that teleports you to another dimension" ; ~ replace with GetLocalString pls
-			Width = Width - 68
+			Width = Width + 68
 			;[End Block]
 		Default
 			;[Block]
@@ -4296,10 +4295,10 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 	
 	Lines = GetLineAmount(Txt, fw, fh)
 	If Txt2 = ""
-		RenderFrame(x, y, Width, ((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + Extraspace)
+		RenderFrame(x, y, Width, ((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale))
 	Else
 		Lines2 = GetLineAmount(Txt2, fw, fh)
-		RenderFrame(x, y, Width, (((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + (StringHeight(Txt2) * Lines2) + (10 + Lines2) * MenuScale) + Extraspace)
+		RenderFrame(x, y, Width, (((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + (StringHeight(Txt2) * Lines2) + (10 + Lines2) * MenuScale))
 	EndIf
 	RowText(Txt, fx, fy, fw, fh)
 	If Txt2 <> ""

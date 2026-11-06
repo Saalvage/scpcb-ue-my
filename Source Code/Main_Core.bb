@@ -5264,6 +5264,7 @@ Function RenderGUI%()
 					SetFontEx(fo\FontID[Font_Default])
 					Color(255, 255, 255)
 					TextEx(x + (INVENTORY_GFX_SIZE / 2), y + INVENTORY_GFX_SIZE + INVENTORY_GFX_SPACING - (15 * MenuScale), OtherOpen\SecondInv[n]\ItemTemplate\DisplayName, True)
+					RenderItemTooltip(mo\RawMouseX, mo\RawMouseY, 300, 300, OtherOpen\SecondInv[n]\ItemTemplate\ID)
 				EndIf
 			EndIf
 			
@@ -5435,6 +5436,7 @@ Function RenderGUI%()
 						SetFontEx(fo\FontID[Font_Default])
 						Color(255, 255, 255)
 						TextEx(x + (INVENTORY_GFX_SIZE / 2), y + INVENTORY_GFX_SIZE + INVENTORY_GFX_SPACING - (15 * MenuScale), Inventory(n)\DisplayName, True)
+						RenderItemTooltip(MousePosX, MousePosY, 300, 300, Inventory(n)\ItemTemplate\ID)
 					EndIf
 				EndIf
 			EndIf
