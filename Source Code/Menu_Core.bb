@@ -4285,7 +4285,6 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 		Case it_scp1499, it_fine1499
 			;[Block]
 			Txt = "Gas Mask that teleports you to another dimension" ; ~ replace with GetLocalString pls
-			Width = Width + 68
 			;[End Block]
 		Default
 			;[Block]
