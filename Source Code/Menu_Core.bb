@@ -4291,9 +4291,29 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 			;[Block]
 			Txt = "Papers are used to gain knowledge throughout the facility"
 			;[End Block]
+		Case it_wallet
+			;[Block]
+			Txt = "Used to store coins and other small objects"
+			;[End Block]
+		Case it_25ct
+			;[Block]
+			Txt = "A quarter"
+			;[End Block]
+		Case it_clipboard
+			;[Block]
+			Txt = "Used to store paper and notes"
+			;[End Block]
+		Case it_scp005, it_coarse005, it_crystal005
+			;[Block]
+			Txt = "A key that can unlock any door. Key card, DNA, or code"
+			;[End Block]
 		Case it_scp1499, it_fine1499
 			;[Block]
 			Txt = "Gas Mask that teleports you to another dimension"
+			;[End Block]
+		Case it_scp2022pill
+			;[Block]
+			Txt = "Small glowing pill that heals the consumer"
 			;[End Block]
 		Case it_scp1025
 			;[Block]
@@ -4308,7 +4328,7 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 			;[End Block]
 		Case it_scp500pill
 			;[Block]
-			Txt = "A pill that can cure any ailment."
+			Txt = "A pill that can cure any ailment"
 			;[End Block]
 		Case it_scp714, it_coarse714, it_fine714
 			;[Block]
@@ -4321,6 +4341,58 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 		Case it_fine513
 			;[Block]
 			Txt = "A shiny cowbell that summons an entity that haunts those who hear it"
+			;[End Block]
+		Case it_mastercard, it_mastercard_golden
+			;[Block]
+			Txt = "A debit card used to purchase items"
+			;[End Block]
+		Case it_bat, it_coarsebat, it_finebat
+			;[Block]
+			Txt = "Can be used to recharge electronic devices"
+			;[End Block]
+		Case it_nav, it_nav310, it_nav3000
+			;[Block]
+			Txt = "Navigation device which is used to navigate the facility easier"
+			;[End Block]
+		Case it_radio, it_fineradio, it_veryfineradio
+			;[Block]
+			Txt = "Communication device used to listen on conversations or warnings"
+			;[End Block]
+		Case it_pizza
+			;[Block]
+			Txt = "It's pizza day"
+			;[End Block]
+		Case it_syringe, it_finesyringe, it_veryfinesyringe
+			;[Block]
+			Txt = "Injectable Adrenaline used for recovery"
+			;[End Block]
+		Case it_syringeinf
+			;[Block]
+			Txt = "Injectable sample of SCP-008 used for testing"
+			;[End Block]
+		Case it_firstaid, it_firstaid2, it_finefirstaid
+			;[Block]
+			Txt = "Emergency medical supplies used for major injuries"
+			;[End Block]
+		Case it_veryfinefirstaid
+			;[Block]
+			Txt = "There is unknown liquid inside this bottle"
+			;[End Block]
+		Case it_eyedrops, it_eyedrops2, it_fineeyedrops, it_veryfineeyedrops
+			;[Block]
+			Txt = "Medicated eye drops used to reduce the strain of keeping the eyes open"
+			;[End Block]
+		Case it_gasmask, it_finegasmask, it_veryfinegasmask
+			;[Block]
+			Txt = "Protective face gear used to protect the eyes and prevent suffocation from decontamination gas"
+			;[End Block]
+		Case it_gasmask148
+			;[Block]
+			Txt = "Enhanced protective face gear used to protect the eyes and prevent suffocation from decontamination gas. Can be used to protect oneself from many cognitohazardous effects"
+			;[End Block]
+		Case it_hazmatsuit, it_veryfinehazmatsuit
+			;[Block]
+			Txt = "Protective gear over the whole body that is worn to protect against enviromental hazards"
 			;[End Block]
 		Default
 			;[Block]
