@@ -4270,14 +4270,13 @@ Function GetLineAmount%(Txt$, W%, H%, Leading# = 1.0)
 	Return(LinesShown + 1)
 End Function
 
-Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
+Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%, ItName$)
 	Local fx# = x + 10 * MenuScale
 	Local fy# = y + 10 * MenuScale
 	Local fw# = Width - 20 * MenuScale
 	Local fh# = Height - 20 * MenuScale
 	Local Lines% = 0, Lines2% = 0
-	Local Txt$ = "", Txt2$ = ""
-	Local R% = 0, G% = 0, B% = 0
+	Local Txt$ = ""
 	
 	SetFontEx(fo\FontID[Font_Default])
 	Color(255, 255, 255)
@@ -4400,18 +4399,12 @@ Function RenderItemTooltip%(x%, y%, Width%, Height%, Desc%)
 			;[End Block]
 	End Select
 	
-	Lines = GetLineAmount(Txt, fw, fh)
-	If Txt2 = ""
-		RenderFrame(x, y, Width, ((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale))
-	Else
-		Lines2 = GetLineAmount(Txt2, fw, fh)
-		RenderFrame(x, y, Width, (((StringHeight(Txt) * Lines) + (15 + Lines) * MenuScale) + (StringHeight(Txt2) * Lines2) + (10 + Lines2) * MenuScale))
-	EndIf
-	RowText(Txt, fx, fy, fw, fh)
-	If Txt2 <> ""
-		Color(R, G, B)
-		RowText(Txt2, fx, (fy + (StringHeight(Txt) * Lines) + (5 + Lines) * MenuScale), fw, fh)
-	EndIf
+	Lines = GetLineAmount(ItName, fw, fh)
+	
+	Lines2 = GetLineAmount(Txt, fw, fh)
+	RenderFrame(x, y, Width, (((StringHeight(ItName) * Lines) + (15 + Lines) * MenuScale) + (StringHeight(Txt) * Lines2) + (10 + Lines2) * MenuScale))
+	RowText(ItName, fx, fy, fw, fh)
+	RowText(Txt, fx, (fy + (StringHeight(ItName) * Lines) + (5 + Lines) * MenuScale), fw, fh)
 End Function
 
 Enum OptionTooltips

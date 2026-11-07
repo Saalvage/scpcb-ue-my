@@ -5236,6 +5236,7 @@ Function RenderGUI%()
 	Local InvImgSize% = (64 * MenuScale) / 2
 	Local MaxItemAmountHalf% = MaxItemAmount / 2
 	Local ShowItemDesc% = -1
+	Local ItName$ = ""
 	
 	If OtherOpen <> Null
 		Local TempX% = 0
@@ -5262,10 +5263,8 @@ Function RenderGUI%()
 			EndIf
 			If OtherOpen\SecondInv[n] <> Null And SelectedItem <> OtherOpen\SecondInv[n]
 				If IsMouseOn = n
-					SetFontEx(fo\FontID[Font_Default])
-					Color(255, 255, 255)
-					TextEx(x + (INVENTORY_GFX_SIZE / 2), y + INVENTORY_GFX_SIZE + INVENTORY_GFX_SPACING - (15 * MenuScale), OtherOpen\SecondInv[n]\ItemTemplate\DisplayName, True)
 					ShowItemDesc = OtherOpen\SecondInv[n]\ItemTemplate\ID
+					ItName = OtherOpen\SecondInv[n]\ItemTemplate\DisplayName
 				EndIf
 			EndIf
 			
@@ -5285,6 +5284,8 @@ Function RenderGUI%()
 		EndIf
 		
 		RenderCursor()
+		
+		If ShowItemDesc <> - 1 Then RenderItemTooltip(MousePosX, MousePosY, 300, 300, ShowItemDesc, ItName)
 	ElseIf InvOpen
 		x = mo\Viewport_Center_X - ((INVENTORY_GFX_SIZE * MaxItemAmountHalf) + (INVENTORY_GFX_SPACING * (MaxItemAmountHalf - 1))) / 2
 		y = mo\Viewport_Center_Y - INVENTORY_GFX_SIZE - INVENTORY_GFX_SPACING
@@ -5434,10 +5435,8 @@ Function RenderGUI%()
 			If Inventory(n) <> Null And SelectedItem <> Inventory(n)
 				If IsMouseOn = n
 					If SelectedItem = Null
-						SetFontEx(fo\FontID[Font_Default])
-						Color(255, 255, 255)
-						TextEx(x + (INVENTORY_GFX_SIZE / 2), y + INVENTORY_GFX_SIZE + INVENTORY_GFX_SPACING - (15 * MenuScale), Inventory(n)\DisplayName, True)
 						ShowItemDesc = Inventory(n)\ItemTemplate\ID
+						ItName = Inventory(n)\DisplayName
 					EndIf
 				EndIf
 			EndIf
@@ -5455,9 +5454,9 @@ Function RenderGUI%()
 			EndIf
 		EndIf
 		
-		If ShowItemDesc <> - 1 Then RenderItemTooltip(MousePosX, MousePosY, 300, 300, ShowItemDesc)
-		
 		RenderCursor()
+		
+		If ShowItemDesc <> - 1 Then RenderItemTooltip(MousePosX, MousePosY, 300, 300, ShowItemDesc, ItName)
 	Else
 		If SelectedItem <> Null Then RenderUseItem(SelectedItem)
 	EndIf
