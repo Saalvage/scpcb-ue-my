@@ -469,6 +469,8 @@ Function RemoveSoundEmitter%(se.SoundEmitters)
 	Delete(se)
 End Function
 
+Const RMESH_MAX_VERSION = 2
+
 Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 	CatchErrors("LoadRMesh(" + File + ")")
 	
@@ -486,12 +488,18 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 	Local Temp1s$
 	Local CollisionMeshes% = CreatePivot()
 	Local IsRMesh$ = ReadString(f)
-	
-	If IsRMesh = "RoomMesh"
-		; ~ Continue
-	Else
-		RuntimeErrorEx(Format(Format(GetLocalString("runerr", "notrmesh"), File, "{0}"), IsRMesh, "{1}"))
-	EndIf
+	Local Version% = -1
+
+	Select IsRMesh
+		Case "RoomMesh" ; ~ Continue
+		Case "RoomMesh.HasTriggerBox" RuntimeErrorEx("Trigger boxes are not supported!")
+		Case "RM" Version = ReadByte(f)
+		Default RuntimeErrorEx(Format(Format(GetLocalString("runerr", "notrmesh"), File, "{0}"), IsRMesh, "{1}"))
+	End Select
+
+	DebugLog(File + " " + IsRMesh + " " + Version)
+
+	If Version > RMESH_MAX_VERSION Then RuntimeErrorEx("Unsupported RMesh version!")
 	
 	Local FilePath$ = StripFileName(File)
 	
@@ -673,9 +681,16 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 		EndIf
 	Next
 	
+	If version >= 0 Then
+		Count = ReadInt(f) ; ~ Drawn no collision mesh
+		DebugLog("drawn: " + Count)
+		If Count <> 0 Then RuntimeErrorEx("Drawn no collision meshes are not supported!")
+	EndIf
+
 	Local HiddenMesh% = CreateMesh()
 	
 	Count = ReadInt(f) ; ~ Invisible collision mesh
+	DebugLog("invis: " + Count)
 	For i = 1 To Count
 		Surf = CreateSurface(HiddenMesh)
 		Count2 = ReadInt(f) ; ~ Vertices
@@ -692,8 +707,15 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 			AddTriangle(Surf, Temp1i, Temp3i, Temp2i)
 		Next
 	Next
+
+	If Version >= 0 Then
+		Count = ReadInt(f) ; ~ Trigger boxes
+		DebugLog("triggers: " + Count)
+		If Count <> 0 Then RuntimeErrorEx("Trigger boxes are not supported!")
+	EndIf
 	
 	Count = ReadInt(f) ; ~ Point entities
+	DebugLog("entities: " + Count)
 	
 	Local ts.TempScreens, twp.TempWayPoints, tl.TempLights, tse.TempSoundEmitters, tp.TempProps
 	Local Range#, lColor$, Intensity#
@@ -704,6 +726,7 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 	If rt <> Null ; ~ TEMPORARY SOLUTION
 		For i = 1 To Count
 			Temp1s = ReadString(f)
+			DebugLog("entity type: " + Temp1s)
 			Select Temp1s
 				Case "screen"
 					;[Block]
@@ -750,7 +773,9 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tl.TempLights = New TempLights
 					tl\RoomTemplate = rt
 					
-					tl\HasSprite = ReadByte(f)
+					If Version >= 2 Then
+						tl\HasSprite = ReadByte(f)
+					EndIf
 					
 					tl\x = ReadFloat(f) * RoomScale
 					tl\y = ReadFloat(f) * RoomScale
@@ -769,7 +794,9 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tl.TempLights = New TempLights
 					tl\RoomTemplate = rt
 					
-					tl\HasSprite = ReadByte(f)
+					If Version >= 2 Then
+						tl\HasSprite = ReadByte(f)
+					EndIf
 					
 					tl\x = ReadFloat(f) * RoomScale
 					tl\y = ReadFloat(f) * RoomScale
@@ -825,6 +852,54 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					; ~ A hacky way to use .b3d format
 					If FileExtension(Temp2s) = "b3d" Then Temp2s = Left(Temp2s, Len(Temp2s) - 4)
 					tp\Name = Temp2s + ".b3d"
+					
+					If Version >= 2 Then
+						tp\HasCollision = ReadByte(f)
+						tp\FX = ReadInt(f)
+						tp\Texture = ReadString(f)
+					EndIf
+					;[End Block]
+				; TODO: Remove legacy UER entity types
+				Case "light_fix"
+					;[Block]
+					tl.TempLights = New TempLights
+					tl\RoomTemplate = rt
+					
+					tl\x = ReadFloat(f) * RoomScale
+					tl\y = ReadFloat(f) * RoomScale
+					tl\z = ReadFloat(f) * RoomScale
+					tl\lType = 2
+					
+					lColor = ReadString(f)
+					Intensity = Min(ReadFloat(f) * 0.8, 1.0)
+					tl\Range = ReadFloat(f) / 2000.0
+					tl\R = Int(Piece(lColor, 1, " ")) * Intensity
+					tl\G = Int(Piece(lColor, 2, " ")) * Intensity
+					tl\B = Int(Piece(lColor, 3, " ")) * Intensity
+					
+					tl\HasSprite = False
+					;[End Block]
+				Case "mesh"
+					;[Block]
+					tp.TempProps = New TempProps
+					tp\RoomTemplate = rt
+					
+					tp\x = ReadFloat(f) * RoomScale
+					tp\y = ReadFloat(f) * RoomScale
+					tp\z = ReadFloat(f) * RoomScale
+					
+					Temp2s = ReadString(f)
+					; ~ A hacky way to use .b3d format
+					If FileExtension(Temp2s) = "b3d" Then Temp2s = Left(Temp2s, Len(Temp2s) - 4)
+					tp\Name = Temp2s + ".b3d"
+					
+					tp\Pitch = ReadFloat(f)
+					tp\Yaw = ReadFloat(f)
+					tp\Roll = ReadFloat(f)
+					
+					tp\ScaleX = ReadFloat(f)
+					tp\ScaleY = ReadFloat(f)
+					tp\ScaleZ = ReadFloat(f)
 					
 					tp\HasCollision = ReadByte(f)
 					tp\FX = ReadInt(f)
