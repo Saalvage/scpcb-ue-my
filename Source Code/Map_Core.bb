@@ -808,6 +808,8 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tp.TempProps = New TempProps
 					tp\RoomTemplate = rt
 					
+					Temp2s = ReadString(f)
+					
 					tp\x = ReadFloat(f) * RoomScale
 					tp\y = ReadFloat(f) * RoomScale
 					tp\z = ReadFloat(f) * RoomScale
@@ -820,7 +822,6 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tp\ScaleY = ReadFloat(f)
 					tp\ScaleZ = ReadFloat(f)
 					
-					Temp2s = ReadString(f)
 					; ~ A hacky way to use .b3d format
 					If FileExtension(Temp2s) = "b3d" Then Temp2s = Left(Temp2s, Len(Temp2s) - 4)
 					tp\Name = Temp2s + ".b3d"
