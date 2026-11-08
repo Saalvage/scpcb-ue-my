@@ -155,14 +155,23 @@ Function ResetNegativeStats%(Revive% = False)
 		
 		me\DropSpeed = -0.1
 		me\HeadDropSpeed = 0.0
-		me\Shake = 0.0
 		me\CurrSpeed = 0.0
+		
+		me\HeartBeatVolume = 0.0
+		
+		me\CameraShake = 0.0
+		me\Shake = 0.0
+		me\LightFlash = 0.0
+		me\BlurTimer = 0.0
 		
 		me\FallTimer = 0.0
 		MenuOpen = False
 		
-		HideEntity(me\Head)
 		ShowEntity(me\Collider)
+		TranslateEntity(me\Collider, 0.0, 1.5, 0.0)
+		RotateEntity(me\Collider, 0.0, EntityYaw(me\Collider), 0.0)
+		
+		HideEntity(me\Head)
 		
 		me\Terminated = False
 		me\KillAnim = 0
