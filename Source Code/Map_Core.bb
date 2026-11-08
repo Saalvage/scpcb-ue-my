@@ -750,6 +750,8 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tl.TempLights = New TempLights
 					tl\RoomTemplate = rt
 					
+					tl\HasSprite = ReadByte(f)
+					
 					tl\x = ReadFloat(f) * RoomScale
 					tl\y = ReadFloat(f) * RoomScale
 					tl\z = ReadFloat(f) * RoomScale
@@ -761,13 +763,13 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tl\R = Int(Piece(lColor, 1, " ")) * Intensity
 					tl\G = Int(Piece(lColor, 2, " ")) * Intensity
 					tl\B = Int(Piece(lColor, 3, " ")) * Intensity
-					
-					tl\HasSprite = True
 					;[End Block]
 				Case "spotlight"
 					;[Block]
 					tl.TempLights = New TempLights
 					tl\RoomTemplate = rt
+					
+					tl\HasSprite = ReadByte(f)
 					
 					tl\x = ReadFloat(f) * RoomScale
 					tl\y = ReadFloat(f) * RoomScale
@@ -803,22 +805,12 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					;[End Block]
 				Case "model"
 					;[Block]
-					Temp2s = ReadString(f)
-					RuntimeErrorEx(Format(Format(GetLocalString("runerr", "model.support"), rt\Name, "{0}"), "GFX\Map\Props\" + Temp2s, "{1}"))
-					;[End Block]
-				Case "mesh"
-					;[Block]
 					tp.TempProps = New TempProps
 					tp\RoomTemplate = rt
 					
 					tp\x = ReadFloat(f) * RoomScale
 					tp\y = ReadFloat(f) * RoomScale
 					tp\z = ReadFloat(f) * RoomScale
-					
-					Temp2s = ReadString(f)
-					; ~ A hacky way to use .b3d format
-					If FileExtension(Temp2s) = "b3d" Then Temp2s = Left(Temp2s, Len(Temp2s) - 4)
-					tp\Name = Temp2s + ".b3d"
 					
 					tp\Pitch = ReadFloat(f)
 					tp\Yaw = ReadFloat(f)
@@ -827,6 +819,11 @@ Function LoadRMesh%(File$, rt.RoomTemplates, HasCollision% = True)
 					tp\ScaleX = ReadFloat(f)
 					tp\ScaleY = ReadFloat(f)
 					tp\ScaleZ = ReadFloat(f)
+					
+					Temp2s = ReadString(f)
+					; ~ A hacky way to use .b3d format
+					If FileExtension(Temp2s) = "b3d" Then Temp2s = Left(Temp2s, Len(Temp2s) - 4)
+					tp\Name = Temp2s + ".b3d"
 					
 					tp\HasCollision = ReadByte(f)
 					tp\FX = ReadInt(f)
