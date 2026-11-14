@@ -8978,12 +8978,12 @@ Function UpdateEvent_Dimension_1499%(e.Events)
 				For i = -1 To 1
 					For j = -1 To 1
 						If i <> 0 And j <> 0
-							n.NPCs = CreateNPC(NPCType1499_1, EntityX(me\Collider) + (0.75 * i), EntityY(me\Collider) + 0.05, EntityZ(me\Collider) + (0.75 * j))
+							n.NPCs = CreateNPC(NPCType1499_1, EntityX(me\Collider) + (0.75 * i), EntityY(me\Collider) + 0.2, EntityZ(me\Collider) + (0.75 * j))
 							n\State = 2.0
 							PointEntity(n\Collider, me\Collider)
 							RotateEntity(n\Collider, 0.0, EntityYaw(n\Collider), 0.0)
 						ElseIf i <> 0 Lor j <> 0
-							n.NPCs = CreateNPC(NPCType1499_1, EntityX(me\Collider) + i, EntityY(me\Collider) + 0.05, EntityZ(me\Collider) + j)
+							n.NPCs = CreateNPC(NPCType1499_1, EntityX(me\Collider) + i, EntityY(me\Collider) + 0.2, EntityZ(me\Collider) + j)
 							n\State = 2.0
 							PointEntity(n\Collider, me\Collider)
 							RotateEntity(n\Collider, 0.0, EntityYaw(n\Collider), 0.0)
