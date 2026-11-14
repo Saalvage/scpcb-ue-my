@@ -3344,7 +3344,7 @@ Function UpdateUseItem%(item.Items)
 			
 			If n_I\Curr513_1 = Null Then n_I\Curr513_1 = CreateNPC(NPCType513_1, 0.0, 0.0, 0.0)
 			
-			If me\Deaf
+			If me\Deaf And (Not wi\Headphones)
 				msg\DeathMsg = GetLocalString("death", "513")
 				Kill(True)
 			EndIf
