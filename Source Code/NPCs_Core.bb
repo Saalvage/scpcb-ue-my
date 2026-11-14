@@ -130,8 +130,10 @@ Function CreateNPC.NPCs(NPCType%, x#, y#, z#)
 			n\NVGName = GetLocalString("npc", "undefine")
 			n\HP = 400
 			
+			n\CollRadius = 0.2
+			
 			n\Collider = CreatePivot()
-			EntityRadius(n\Collider, n\CollRadius * 0.5, n\CollRadius)
+			EntityRadius(n\Collider, n\CollRadius, n\CollRadius)
 			EntityType(n\Collider, HIT_PLAYER)
 			
 			n\OBJ = CopyEntity(n_I\NPCModelID[NPC_035_TENTACLE_MODEL])
