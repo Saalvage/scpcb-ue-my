@@ -850,7 +850,7 @@ Function UpdateMainMenu%()
 						
 						y = y + (30 * MenuScale)
 						
-						opt\HUDOffset = UpdateMenuSlideBar(x, y, 150 * MenuScale, opt\HUDOffset * 200.0, 1)
+						opt\HUDOffset = UpdateMenuSlideBar(x, y, 150 * MenuScale, opt\HUDOffset / 5.0, 1) * 5.0
 						
 						y = y + 30 * MenuScale
 						
@@ -2406,7 +2406,7 @@ Function UpdatePauseMenu%()
 						
 						y = y + (30 * MenuScale)
 						
-						opt\HUDOffset = UpdateMenuSlideBar(x, y, 100 * MenuScale, opt\HUDOffset * 200.0, 1)
+						opt\HUDOffset = UpdateMenuSlideBar(x, y, 100 * MenuScale, opt\HUDOffset / 5.0, 1) * 5.0
 						
 						y = y + (30 * MenuScale)
 						
