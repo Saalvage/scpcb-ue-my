@@ -4848,6 +4848,9 @@ Function RenderMap%()
 		Local y% = StartY + ((r\z / 8) * CellSize)
 		
 		If MouseOn(x, y, CellSize, CellSize)
+			
+			RenderFrame(MousePosX, MousePosY, StringWidth(r\RoomTemplate\Name) + 20 * MenuScale, 32 * MenuScale)
+			TextEx(MousePosX + (10 * MenuScale), MousePosY + (10 * MenuScale), r\RoomTemplate\Name)
 			Color(100, 255, 100)
 			If mo\MouseHit1 Then Teleport(r)
 		EndIf
