@@ -1617,7 +1617,7 @@ Function RenderMainMenu%()
 					;[End Block]
 				Case MainMenuTab_Options_Advanced
 					;[Block]
-					Height = (460 - (50.0 * (opt\CurrFrameLimit = 0.0))) * MenuScale
+					Height = (490 - (50.0 * (opt\CurrFrameLimit = 0.0))) * MenuScale
 					RenderFrame(x - (20 * MenuScale), y, Width, Height)
 					
 					y = y + (20 * MenuScale)
