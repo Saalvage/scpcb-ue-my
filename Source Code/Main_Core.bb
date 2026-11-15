@@ -4838,7 +4838,7 @@ Function RenderMap%()
 	
 	Local r.Rooms
 	For r.Rooms = Each Rooms
-		If PlayerRoom\x = r\x And PlayerRoom\z = r\z
+		If PlayerRoom = r
 			Color(0, 255, 0)
 		Else
 			Color(r\RoomTemplate\R, r\RoomTemplate\G, r\RoomTemplate\B)
