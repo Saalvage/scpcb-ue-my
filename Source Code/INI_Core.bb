@@ -415,7 +415,7 @@ Function LoadOptionsINI%()
 	opt\FrameLimit = IniGetInt(OptionFile, "Advanced", "Frame Limit", 0.0)
 	opt\CurrFrameLimit = (opt\FrameLimit - 19.0) / 100.0
 	
-	opt\SmoothBars = IniGetInt(OptionFile, "Advanced", "Smooth Bars", True)
+	opt\SmoothBars = IniGetInt(OptionFile, "Advanced", "Modern HUD", True)
 	
 	opt\VignetteEnabled = IniGetInt(OptionFile, "Advanced", "Vignette Enabled", True)
 	
@@ -537,7 +537,7 @@ Function SaveOptionsINI%(SaveGlobal% = False)
 	
 	IniWriteInt(OptionFile, "Advanced", "Frame Limit", opt\FrameLimit)
 	
-	IniWriteInt(OptionFile, "Advanced", "Smooth Bars", opt\SmoothBars)
+	IniWriteInt(OptionFile, "Advanced", "Modern HUD", opt\SmoothBars)
 	
 	IniWriteInt(OptionFile, "Advanced", "Vignette Enabled", opt\VignetteEnabled)
 	
