@@ -3638,18 +3638,25 @@ Function UpdateUseItem%(item.Items)
 				item\UsageTimer = Min(item\UsageTimer + (fps\Factor[0] / (0.5 * (1.0 + (I_1025\State[6] > 0.0)))), 100.0)
 				If item\UsageTimer = 100.0
 					me\BlinkEffect = 0.6
-					me\BlinkEffectTimer = Rnd(30.0, 40.0)
+					me\BlinkEffectTimer = Rnd(25.0, 35.0)
 					me\BlurTimer = 200.0
 					me\BlinkTimer = Min(me\BlinkTimer + (me\BLINKFREQ / 2.0), me\BLINKFREQ)
 					
 					If item\ItemTemplate\ID = it_eyedrops2
-						me\Bloodloss = Max(me\Bloodloss - Rnd(7.5, 15.0), 0.0)
+						me\Bloodloss = Max(me\Bloodloss - Rnd(5.0, 10.0), 0.0)
 						me\EyeIrritation = 0.0
 					EndIf
 					
 					CreateMsg(GetLocalString("msg", "eyedrop.moisturized"))
 					If item\ItemTemplate\SoundID <> 66 Then PlaySound_Strict(snd_I\PickSFX[item\ItemTemplate\SoundID])
-					RemoveItem(SelectedItem)
+					
+					item\State = item\State - 1.0
+					If item\State > 0.0
+						item\UsageTimer = 0.0
+						SelectedItem = Null
+					Else
+						RemoveItem(SelectedItem)
+					EndIf
 				EndIf
 			EndIf
 			;[End Block]

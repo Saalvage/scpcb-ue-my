@@ -273,10 +273,12 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 1850.0 * RoomScale, r\y + 505.0 * RoomScale, r\z + 1087.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			If Rand(3) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 1920.0 * RoomScale, r\y + 505.0 * RoomScale, r\z + 1087.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			EndIf
 			
@@ -547,6 +549,7 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 206.0 * RoomScale, r\y + 190.0 * RoomScale, r\z + 180.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("Syringe", it_syringe, r\x + 709.0 * RoomScale, r\y + 142.0 * RoomScale, r\z - 258.0 * RoomScale)
@@ -721,6 +724,7 @@ Function FillRoom%(r.Rooms)
 			CreateDoor(r, r\x + 288.0 * RoomScale, r\y + 384.0 * RoomScale, r\z + 652.0 * RoomScale, 90.0, False, DEFAULT_DOOR, KEY_CARD_1)
 			If Rand(2) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 598.0 * RoomScale, r\y + 560.0 * RoomScale, r\z + 950.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 				it.Items = CreateItem("Cigarette", it_cigarette, r\x - 752.0 * RoomScale, r\y + 550.0 * RoomScale, r\z + 165.0 * RoomScale)
 				EntityParent(it\Collider, r\OBJ)
@@ -799,6 +803,7 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 736.0 * RoomScale, r\y + 176.0 * RoomScale, r\z + 544.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateRandomBattery(r\x + 736.0 * RoomScale, r\y + 100.0 * RoomScale, r\z - 448.0 * RoomScale)
@@ -848,6 +853,7 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 730.0 * RoomScale, r\y + 164.0 * RoomScale, r\z - 826.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			;[End Block]
 		Case r_room2_elevator
@@ -2713,6 +2719,7 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 1930.0 * RoomScale, r\y + 225.0 * RoomScale, r\z + 128.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("Note from Nobody #4", it_paper, r\x + 996.0 * RoomScale, r\y + 160.0 * RoomScale, r\z -102.0 * RoomScale)
@@ -3055,6 +3062,7 @@ Function FillRoom%(r.Rooms)
 			RotateEntity(it\Collider, 0.0, 0.0, 0.0)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 1946.0 * RoomScale, r\y - 4168.0 * RoomScale, r\z - 336.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateRandomBattery(r\x - 1958 * RoomScale, r\y - 4106.0 * RoomScale, r\z - 505.0 * RoomScale)
@@ -3634,10 +3642,12 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 1530.0 * RoomScale, r\y + 659.0 * RoomScale, r\z + 693.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			If Rand(3) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 1530.0 * RoomScale, r\y + 659.0 * RoomScale, r\z + 593.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			EndIf
 			
@@ -3714,6 +3724,7 @@ Function FillRoom%(r.Rooms)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 976.0 * RoomScale, r\y + 534.0 * RoomScale, r\z + 929.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			it.Items = CreateRandomBattery(r\x - 992.0 * RoomScale, r\y + 534.0 * RoomScale, r\z + 631.0 * RoomScale)
@@ -3746,6 +3757,7 @@ Function FillRoom%(r.Rooms)
 			
 			If Rand(3) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 546.0 * RoomScale, r\y + 162.0 * RoomScale, r\z - 959.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			EndIf
 			;[End Block]
@@ -4254,6 +4266,7 @@ Function FillRoom%(r.Rooms)
 			
 			If Rand(3) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 402.0 * RoomScale, r\y + 200.0 * RoomScale, r\z - 922.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			Else
 				it.Items = CreateItem("Syringe", it_syringe, r\x + 402.0 * RoomScale, r\y + 200.0 * RoomScale, r\z - 922.0 * RoomScale)
@@ -4461,15 +4474,18 @@ Function FillRoom%(r.Rooms)
 			EntityAlpha(r\Objects[0], 0.0)
 			
 			it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 957.0 * RoomScale, r\y + 220.0 * RoomScale, r\z + 659.0 * RoomScale)
+			it\State = Rand(2, 3)
 			EntityParent(it\Collider, r\OBJ)
 			
 			If Rand(2) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 957.0 * RoomScale, r\y + 157.0 * RoomScale, r\z + 885.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			EndIf
 			
 			If Rand(2) = 1
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x + 307.0 * RoomScale, r\y + 140.0 * RoomScale, r\z + 811.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			EndIf
 			
@@ -4524,6 +4540,7 @@ Function FillRoom%(r.Rooms)
 				EntityParent(it\Collider, r\OBJ)
 				
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 514.0 * RoomScale, r\y + 200.0 * RoomScale, r\z + 572.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 				
 				it.Items = CreateRandomBattery(r\x - 937.0 * RoomScale, r\y + 260.0 * RoomScale, r\z - 937.0 * RoomScale)
@@ -4543,6 +4560,7 @@ Function FillRoom%(r.Rooms)
 				EntityParent(it\Collider, r\OBJ)
 				
 				it.Items = CreateItem("ReVision Eyedrops", it_eyedrops, r\x - 937.0 * RoomScale, r\y + 260.0 * RoomScale, r\z - 937.0 * RoomScale)
+				it\State = Rand(2, 3)
 				EntityParent(it\Collider, r\OBJ)
 			EndIf
 			If Rand(2) = 1
