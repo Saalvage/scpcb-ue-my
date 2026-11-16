@@ -3674,7 +3674,14 @@ Function UpdateUseItem%(item.Items)
 					
 					CreateMsg(GetLocalString("msg", "eyedrop.moisturized.very"))
 					If item\ItemTemplate\SoundID <> 66 Then PlaySound_Strict(snd_I\PickSFX[item\ItemTemplate\SoundID])
-					RemoveItem(SelectedItem)
+					
+					item\State = item\State - 1.0
+					If item\State > 0.0
+						item\UsageTimer = 0.0
+						SelectedItem = Null
+					Else
+						RemoveItem(SelectedItem)
+					EndIf
 				EndIf
 			EndIf
 			;[End Block]
@@ -3692,7 +3699,14 @@ Function UpdateUseItem%(item.Items)
 					
 					CreateMsg(GetLocalString("msg", "eyedrop.moisturized.veryvery"))
 					If item\ItemTemplate\SoundID <> 66 Then PlaySound_Strict(snd_I\PickSFX[item\ItemTemplate\SoundID])
-					RemoveItem(SelectedItem)
+					
+					item\State = item\State - 1.0
+					If item\State > 0.0
+						item\UsageTimer = 0.0
+						SelectedItem = Null
+					Else
+						RemoveItem(SelectedItem)
+					EndIf
 				EndIf
 			EndIf
 			;[End Block]

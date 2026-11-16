@@ -2064,17 +2064,17 @@ Function Use914%(item.Items, Setting%, x#, y#, z#)
 					Else
 						it2.Items = CreateItem("RedVision Eyedrops", it_eyedrops2, x, y, z)
 					EndIf
-					it2\State = Rand(2, 3)
+					it2\State = item\State
 					;[End Block]
 				Case SETTING_FINE
 					;[Block]
 					it2.Items = CreateItem("Fine Eyedrops", it_fineeyedrops, x, y, z)
-					it2\State = Rand(2, 3)
+					it2\State = item\State
 					;[End Block]
 				Case SETTING_VERY_FINE
 					;[Block]
 					it2.Items = CreateItem("Very Fine Eyedrops", it_veryfineeyedrops, x, y, z)
-					it2\State = Rand(2, 3)
+					it2\State = item\State
 					;[End Block]
 			End Select
 			;[End Block]
